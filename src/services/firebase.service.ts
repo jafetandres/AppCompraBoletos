@@ -40,6 +40,18 @@ export class FirebaseService {
       })
     })
   }
+  getPaises(){
+    
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+      
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('pais').snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      })
+    })
+  }
 
   getTask(taskId){
     console.log("entro a los servicios firebase");
@@ -106,6 +118,18 @@ export class FirebaseService {
       this.afs.collection('people').doc(currentUser.uid).collection('ruta').add({
         descripcion: value.descripcion,
         precio: value.precio
+      })
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+    })
+  }
+  crearPais(value){
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('people').doc(currentUser.uid).collection('pais').add({
+        descripcion: value.descripcion,
       })
       .then(
         res => resolve(res),

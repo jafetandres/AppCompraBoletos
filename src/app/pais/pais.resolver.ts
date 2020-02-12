@@ -12,6 +12,6 @@ export class PaisResolver implements Resolve<any> {
   }
   resolve() {
     
-    return this.firebaseService.getRutas();
+    return this.firebaseService.getPaises();
   }
 }

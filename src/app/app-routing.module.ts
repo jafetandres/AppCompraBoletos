@@ -44,6 +44,10 @@ const routes: Routes = [
   {
     path: 'ciudad',
     loadChildren: () => import('./ciudad/ciudad.module').then( m => m.CiudadPageModule)
+  },
+  {
+    path: 'nuevo-pais',
+    loadChildren: () => import('./nuevo-pais/nuevo-pais.module').then( m => m.NuevoPaisPageModule)
   }
   // {
   //   path: '',
