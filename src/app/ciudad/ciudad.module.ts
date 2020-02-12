@@ -7,14 +7,29 @@ import { IonicModule } from '@ionic/angular';
 import { CiudadPageRoutingModule } from './ciudad-routing.module';
 
 import { CiudadPage } from './ciudad.page';
+import { CiudadResolver } from './ciudad.resolve';
+import { Routes, RouterModule } from '@angular/router';
 
+const routes: Routes = [
+  {
+    path: '',
+    component: CiudadPage,
+    resolve: {
+      data: CiudadResolver
+    }
+  }
+];
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CiudadPageRoutingModule
+    RouterModule.forChild(routes),
+    CiudadPageModule
   ],
-  declarations: [CiudadPage]
+  declarations: [CiudadPage],
+  providers: [
+    CiudadResolver
+  ]
 })
 export class CiudadPageModule {}
