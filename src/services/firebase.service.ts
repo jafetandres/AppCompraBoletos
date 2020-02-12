@@ -28,6 +28,18 @@ export class FirebaseService {
       })
     })
   }
+  getRutas(){
+    
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+      
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('ruta').snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      })
+    })
+  }
 
   getTask(taskId){
     console.log("entro a los servicios firebase");
@@ -81,6 +93,19 @@ export class FirebaseService {
         title: value.title,
         description: value.description,
         image: value.image
+      })
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+    })
+  }
+  crearRuta(value){
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('people').doc(currentUser.uid).collection('ruta').add({
+        descripcion: value.descripcion,
+        precio: value.precio
       })
       .then(
         res => resolve(res),

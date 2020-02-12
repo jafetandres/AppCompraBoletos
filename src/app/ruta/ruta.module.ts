@@ -7,14 +7,30 @@ import { IonicModule } from '@ionic/angular';
 import { RutaPageRoutingModule } from './ruta-routing.module';
 
 import { RutaPage } from './ruta.page';
+import { Routes, RouterModule } from '@angular/router';
+import { RutaResolver } from './ruta.resolver';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: RutaPage,
+    resolve: {
+      data: RutaResolver
+    }
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RutaPageRoutingModule
+   
+    RouterModule.forChild(routes)
   ],
-  declarations: [RutaPage]
+  declarations: [RutaPage],
+  providers: [
+    RutaResolver
+  ]
 })
 export class RutaPageModule {}
