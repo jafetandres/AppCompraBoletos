@@ -5,16 +5,32 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { PaisPageRoutingModule } from './pais-routing.module';
-
+import { Routes, RouterModule } from '@angular/router';
 import { PaisPage } from './pais.page';
+import { PaisResolver } from './pais.resolver';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: PaisPage,
+    resolve: {
+      data: PaisResolver
+    }
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PaisPageRoutingModule
+    RouterModule.forChild(routes)
+    
   ],
-  declarations: [PaisPage]
+  declarations: [PaisPage],
+  providers: [
+    PaisResolver
+  ]
+
 })
 export class PaisPageModule {}

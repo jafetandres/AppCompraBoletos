@@ -7,14 +7,29 @@ import { IonicModule } from '@ionic/angular';
 import { ProvinciaPageRoutingModule } from './provincia-routing.module';
 
 import { ProvinciaPage } from './provincia.page';
+import { ProvinciaResolver } from './provincia.resolver';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: ProvinciaPage,
+    resolve: {
+      data: ProvinciaResolver
+    }
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProvinciaPageRoutingModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [ProvinciaPage]
+  declarations: [ProvinciaPage],
+  providers: [
+    ProvinciaResolver
+  ]
 })
 export class ProvinciaPageModule {}

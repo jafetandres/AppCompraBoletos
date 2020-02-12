@@ -40,12 +40,10 @@ const routes: Routes = [
   {
     path: 'pais',
     loadChildren: () => import('./pais/pais.module').then( m => m.PaisPageModule)
-
   },
   {
     path: 'ciudad',
     loadChildren: () => import('./ciudad/ciudad.module').then( m => m.CiudadPageModule)
-
   }
   // {
   //   path: '',
