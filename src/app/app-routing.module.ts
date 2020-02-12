@@ -34,8 +34,13 @@ const routes: Routes = [
     loadChildren: () => import('./nueva-ruta/nueva-ruta.module').then( m => m.NuevaRutaPageModule)
   },
   {
+<<<<<<< HEAD
     path: 'provincia',
     loadChildren: () => import('./provincia/provincia.module').then( m => m.ProvinciaPageModule)
+=======
+    path: 'pais',
+    loadChildren: () => import('./pais/pais.module').then( m => m.PaisPageModule)
+>>>>>>> db2046a10f1748f3b2ff23e8ceebc527fa3b3657
   }
   // {
   //   path: '',
