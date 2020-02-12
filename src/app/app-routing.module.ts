@@ -32,6 +32,10 @@ const routes: Routes = [
   {
     path: 'nueva-ruta',
     loadChildren: () => import('./nueva-ruta/nueva-ruta.module').then( m => m.NuevaRutaPageModule)
+  },
+  {
+    path: 'pais',
+    loadChildren: () => import('./pais/pais.module').then( m => m.PaisPageModule)
   }
   // {
   //   path: '',
