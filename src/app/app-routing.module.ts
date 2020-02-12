@@ -1,0 +1,48 @@
+import { NgModule } from '@angular/core';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'new-task',
+    loadChildren: () => import('./new-task/new-task.module').then( m => m.NewTaskPageModule)
+  },
+  {
+    path: 'details/:id',
+    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+  },
+  {
+    path: 'location-select',
+    loadChildren: () => import('./location-select/location-select.module').then( m => m.LocationSelectPageModule)
+  },
+  {
+    path: 'ruta',
+    loadChildren: () => import('./ruta/ruta.module').then( m => m.RutaPageModule)
+  },
+  {
+    path: 'nueva-ruta',
+    loadChildren: () => import('./nueva-ruta/nueva-ruta.module').then( m => m.NuevaRutaPageModule)
+  }
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  // }
+  
+];
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}

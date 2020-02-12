@@ -1,0 +1,7 @@
+{
+  "name": "AppCompraBoletos",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
