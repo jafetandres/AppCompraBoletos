@@ -24,9 +24,13 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    PaisPageRoutingModule
+    RouterModule.forChild(routes)
+    
   ],
-  declarations: [PaisPage]
+  declarations: [PaisPage],
+  providers: [
+    PaisResolver
+  ]
 
 })
 export class PaisPageModule {}

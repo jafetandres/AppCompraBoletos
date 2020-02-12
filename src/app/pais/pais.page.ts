@@ -51,6 +51,6 @@ export class PaisPage implements OnInit {
     })
   }
 
-}
+
 
 }
