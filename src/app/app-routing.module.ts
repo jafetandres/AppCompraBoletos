@@ -41,7 +41,11 @@ const routes: Routes = [
     path: 'pais',
     loadChildren: () => import('./pais/pais.module').then( m => m.PaisPageModule)
 >>>>>>> db2046a10f1748f3b2ff23e8ceebc527fa3b3657
+  },  {
+    path: 'ciudad',
+    loadChildren: () => import('./ciudad/ciudad.module').then( m => m.CiudadPageModule)
   }
+
   // {
   //   path: '',
   //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
