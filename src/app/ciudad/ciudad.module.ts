@@ -25,7 +25,6 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    CiudadPageModule
   ],
   declarations: [CiudadPage],
   providers: [
