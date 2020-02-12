@@ -1,9 +1,34 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>pais</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="end">
+        <ion-button [routerLink]="['/nueva-pais']">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Paises</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-content *ngIf="items" class="list-mini-content" padding>
+       
+  
+      <div *ngIf="items.length > 0" class="list-mini">
+        <ion-list>
+          <ion-item *ngFor="let item of items" >
+           
+            <ion-label>{{item.payload.doc.data().descripcion}}</ion-label>
+            
+          </ion-item>
+        </ion-list>
+      </div>
+      <div *ngIf="items.length == 0" class="empty-list">
+        Por favor crea un pais.
+      </div>
+    </ion-content>
+  
+  </ion-content>
+  
