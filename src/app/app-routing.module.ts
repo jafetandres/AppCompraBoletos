@@ -46,6 +46,10 @@ const routes: Routes = [
     loadChildren: () => import('./ciudad/ciudad.module').then( m => m.CiudadPageModule)
   },
   {
+    path: 'nueva-ciudad',
+    loadChildren: () => import('./nueva-ciudad/nueva-ciudad.module').then( m => m.NuevaCiudadPageModule)
+  },
+  {
     path: 'nuevo-pais',
     loadChildren: () => import('./nuevo-pais/nuevo-pais.module').then( m => m.NuevoPaisPageModule)
   },
@@ -53,6 +57,7 @@ const routes: Routes = [
     path: 'nueva-provincia',
     loadChildren: () => import('./nueva-provincia/nueva-provincia.module').then( m => m.NuevaProvinciaPageModule)
   }
+
   // {
   //   path: '',
   //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)

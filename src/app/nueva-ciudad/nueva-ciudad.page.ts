@@ -5,14 +5,16 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { LoadingController, ToastController } from '@ionic/angular';
 import { FirebaseService } from 'src/services/firebase.service';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+
 @Component({
-  selector: 'app-nueva-provincia',
-  templateUrl: './nueva-provincia.page.html',
-  styleUrls: ['./nueva-provincia.page.scss'],
+  selector: 'app-nueva-ciudad',
+  templateUrl: './nueva-ciudad.page.html',
+  styleUrls: ['./nueva-ciudad.page.scss'],
 })
-export class NuevaProvinciaPage implements OnInit {
+export class NuevaCiudadPage implements OnInit {
   items: Array<any>;
   validations_form: FormGroup;
+
   constructor(
     public loadingCtrl: LoadingController,
     private authService: AuthService,
@@ -22,7 +24,7 @@ export class NuevaProvinciaPage implements OnInit {
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
     private webview: WebView
-  ) { }
+    ) { }
 
   ngOnInit() {
     this.resetFields();
@@ -30,8 +32,27 @@ export class NuevaProvinciaPage implements OnInit {
       this.getData();
     }
   }
+  resetFields() {
 
+    this.validations_form = this.formBuilder.group({
+      provincia: new FormControl('', Validators.required),
 
+      descripcion: new FormControl('', Validators.required),
+
+    });
+  }
+
+  onSubmit(value) {
+    const data = {
+      descripcion: value.descripcion,
+    };
+    this.firebaseService.crearCiudad(data)
+    .then(
+      res => {
+        this.router.navigate([ '/ciudad']);
+      }
+    );
+  }
   async getData() {
     const loading = await this.loadingCtrl.create({
       message: 'Cargando'
@@ -45,47 +66,7 @@ export class NuevaProvinciaPage implements OnInit {
       });
     });
   }
-
   async presentLoading(loading) {
     return await loading.present();
   }
-
-  logout() {
-    this.authService.doLogout()
-    .then(res => {
-      this.router.navigate([""]);
-    }, err => {
-      console.log(err);
-    })
-  }
-  resetFields(){
-
-    this.validations_form = this.formBuilder.group({
-      pais: new FormControl('', Validators.required),
-
-      descripcion: new FormControl('', Validators.required),
-
-    });
-  }
-
-  onSubmit(value){
-    let data = {
-      pais: value.pais,
-      descripcion: value.descripcion,
-     
-     
-    }
-    this.firebaseService.crearProvincia(data)
-    .then(
-      res => {
-        this.router.navigate(["/home"]);
-      }
-    )
-  }
-
 }
-
-
-
-
-

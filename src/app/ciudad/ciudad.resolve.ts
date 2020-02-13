@@ -4,14 +4,10 @@ import { FirebaseService } from 'src/services/firebase.service';
 
 @Injectable()
 export class CiudadResolver implements Resolve<any> {
-  
-
   constructor(private firebaseService: FirebaseService) {
-
-
   }
   resolve() {
-    
-    return this.firebaseService.getRutas();
+
+    return this.firebaseService.getCiudades();
   }
 }
