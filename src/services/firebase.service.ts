@@ -37,7 +37,7 @@ export class FirebaseService {
       
         if(currentUser){
 
-          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('ruta').snapshotChanges();
+          this.snapshotChangesSubscription = this.afs.collection('ruta').snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
       })
@@ -72,7 +72,7 @@ export class FirebaseService {
       this.afAuth.user.subscribe(currentUser => {
       
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('ciudad').snapshotChanges();
+          this.snapshotChangesSubscription = this.afs.collection('ciudad').snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
       })
@@ -141,9 +141,11 @@ export class FirebaseService {
   crearRuta(value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('bd').doc(currentUser.uid).collection('ruta').add({
+      this.afs.collection('ruta').add({
         descripcion: value.descripcion,
-        precio: value.precio
+        precio: value.precio,
+        origen: value.origen,
+        destino: value.destino
       })
       .then(
         res => resolve(res),
@@ -184,7 +186,7 @@ export class FirebaseService {
   crearCiudad(value) {
     return new Promise<any>((resolve, reject) => {
       const currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('ciudad').add({
+      this.afs.collection('ciudad').add({
         descripcion: value.descripcion,
       })
       .then(
