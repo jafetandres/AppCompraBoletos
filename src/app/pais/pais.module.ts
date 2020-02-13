@@ -9,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PaisPage } from './pais.page';
 import { PaisResolver } from './pais.resolver';
 
+
 const routes: Routes = [
   {
     path: '',

@@ -20,6 +20,7 @@ import { GoogleMapsService } from 'src/services/google-maps.service';
 import { Network } from '@ionic-native/network/ngx/';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
+import { AngularFireDatabase } from '@angular/fire/database';
 // import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     AngularFireAuthModule, // imports firebase/auth
     AngularFireModule.initializeApp(environment.firebase),BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
+    AngularFireDatabase,
    
     ImagePicker,
     WebView,

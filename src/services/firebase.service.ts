@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class FirebaseService {
 
   constructor(
     public afs: AngularFirestore,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    public db: AngularFireDatabase
   ){}
 
   getTasks(){
@@ -34,6 +36,7 @@ export class FirebaseService {
       this.afAuth.user.subscribe(currentUser => {
       
         if(currentUser){
+
           this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('ruta').snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
@@ -46,7 +49,19 @@ export class FirebaseService {
       this.afAuth.user.subscribe(currentUser => {
       
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('pais').snapshotChanges();
+          this.snapshotChangesSubscription = this.afs.collection('pais').snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      })
+    })
+  }
+  getProvincias(){
+    
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+      
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.collection('provincia').snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
       })
@@ -126,7 +141,7 @@ export class FirebaseService {
   crearRuta(value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('ruta').add({
+      this.afs.collection('bd').doc(currentUser.uid).collection('ruta').add({
         descripcion: value.descripcion,
         precio: value.precio
       })
@@ -139,9 +154,27 @@ export class FirebaseService {
   crearPais(value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('pais').add({
+      this.afs.collection('pais').add({
         descripcion: value.descripcion,
       })
+      // this.afs.collection('people').doc(currentUser.uid).collection('pais').add({
+      //   descripcion: value.descripcion,
+      // })
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+    })
+  }
+  crearProvincia(value){
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('provincia').add({
+        pais: value.pais,
+        descripcion: value.descripcion,
+
+      })
+   
       .then(
         res => resolve(res),
         err => reject(err)
