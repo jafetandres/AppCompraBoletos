@@ -32,26 +32,25 @@ export class NuevaProvinciaPage implements OnInit {
   }
 
 
-  async getData(){
+  async getData() {
     const loading = await this.loadingCtrl.create({
       message: 'Cargando'
     });
     this.presentLoading(loading);
-    
     this.route.data.subscribe(routeData => {
       routeData['data'].subscribe(data => {
         loading.dismiss();
         this.items = data;
-      })
-      
-    })
+        console.log(this.items.length);
+      });
+    });
   }
 
   async presentLoading(loading) {
     return await loading.present();
   }
 
-  logout(){
+  logout() {
     this.authService.doLogout()
     .then(res => {
       this.router.navigate([""]);

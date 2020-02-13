@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ToastController, LoadingController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { AuthService } from 'src/services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { FirebaseService } from 'src/services/firebase.service';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 
@@ -11,35 +12,61 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
   styleUrls: ['./nueva-ciudad.page.scss'],
 })
 export class NuevaCiudadPage implements OnInit {
+  items: Array<any>;
   validations_form: FormGroup;
 
-  constructor(public toastCtrl: ToastController,
+  constructor(
     public loadingCtrl: LoadingController,
-    public router: Router,
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    public toastCtrl: ToastController,
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
-    private webview: WebView) { }
+    private webview: WebView
+    ) { }
 
   ngOnInit() {
     this.resetFields();
+    if (this.route && this.route.data) {
+      this.getData();
+    }
   }
-  resetFields(){
+  resetFields() {
 
     this.validations_form = this.formBuilder.group({
+      provincia: new FormControl('', Validators.required),
+
       descripcion: new FormControl('', Validators.required),
 
     });
   }
 
-  onSubmit(value){
-    let data = {
+  onSubmit(value) {
+    const data = {
       descripcion: value.descripcion,
-    }
+    };
     this.firebaseService.crearCiudad(data)
     .then(
       res => {
         this.router.navigate([ '/ciudad']);
       }
-    )
+    );
+  }
+  async getData() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Cargando'
+    });
+    this.presentLoading(loading);
+    this.route.data.subscribe(routeData => {
+      routeData['data'].subscribe(data => {
+        loading.dismiss();
+        this.items = data;
+        console.log(this.items.length);
+      });
+    });
+  }
+  async presentLoading(loading) {
+    return await loading.present();
   }
 }
