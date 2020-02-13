@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NuevaRutaPageRoutingModule } from './nueva-ruta-routing.module';
 
 import { NuevaRutaPage } from './nueva-ruta.page';
+import { NuevaRutaResolver } from './nueva-ruta.resolver';
 
 const routes: Routes = [
   {
@@ -22,9 +23,11 @@ const routes: Routes = [
     IonicModule,
     FormsModule,
     ReactiveFormsModule,
-    NuevaRutaPageRoutingModule
+    RouterModule.forChild(routes)
   ],
-  providers: [Location],
-  declarations: [NuevaRutaPage]
+  declarations: [NuevaRutaPage],
+  providers : [
+    NuevaRutaResolver
+  ]
 })
 export class NuevaRutaPageModule {}
