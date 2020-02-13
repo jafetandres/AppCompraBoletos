@@ -29,7 +29,9 @@ export class NuevaRutaPage implements OnInit {
 
     this.validations_form = this.formBuilder.group({
       descripcion: new FormControl('', Validators.required),
-      precio: new FormControl('', Validators.required)
+      precio: new FormControl('', Validators.required),
+      origen: new FormControl('',Validators.required),
+      destino: new FormControl('',Validators.required)
     });
   }
 
@@ -37,6 +39,8 @@ export class NuevaRutaPage implements OnInit {
     let data = {
       descripcion: value.descripcion,
       precio: value.precio,
+      origen: value.origen,
+      destino: value.origen
      
     }
     this.firebaseService.crearRuta(data)

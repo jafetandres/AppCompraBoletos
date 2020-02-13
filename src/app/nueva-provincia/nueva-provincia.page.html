@@ -13,7 +13,7 @@
       
       <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
           <ion-item>
-          <ion-label>Pais</ion-label>
+          <ion-label>Seleccione un Pais</ion-label>
           <ion-select formControlName="pais" >
             <ion-select-option *ngFor="let item of items" >{{item.payload.doc.data().descripcion}}</ion-select-option>
           </ion-select>
