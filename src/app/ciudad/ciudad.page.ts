@@ -31,6 +31,7 @@ export class CiudadPage implements OnInit {
       routeData['data'].subscribe(data => {
         loading.dismiss();
         this.items = data;
+        console.log(this.items);
       });
     });
   }

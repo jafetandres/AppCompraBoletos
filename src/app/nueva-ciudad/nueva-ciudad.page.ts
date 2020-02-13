@@ -16,57 +16,36 @@ export class NuevaCiudadPage implements OnInit {
   validations_form: FormGroup;
 
   constructor(
-    public loadingCtrl: LoadingController,
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute,
     public toastCtrl: ToastController,
+    public loadingCtrl: LoadingController,
+    public router: Router,
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
     private webview: WebView
     ) { }
 
-  ngOnInit() {
-    this.resetFields();
-    if (this.route && this.route.data) {
-      this.getData();
+    ngOnInit() {
+      this.resetFields();
     }
-  }
-  resetFields() {
-
-    this.validations_form = this.formBuilder.group({
-      provincia: new FormControl('', Validators.required),
-
-      descripcion: new FormControl('', Validators.required),
-
-    });
-  }
-
-  onSubmit(value) {
-    const data = {
-      descripcion: value.descripcion,
-    };
-    this.firebaseService.crearCiudad(data)
-    .then(
-      res => {
-        this.router.navigate([ '/ciudad']);
-      }
-    );
-  }
-  async getData() {
-    const loading = await this.loadingCtrl.create({
-      message: 'Cargando'
-    });
-    this.presentLoading(loading);
-    this.route.data.subscribe(routeData => {
-      routeData['data'].subscribe(data => {
-        loading.dismiss();
-        this.items = data;
-        console.log(this.items.length);
+    resetFields(){
+  
+      this.validations_form = this.formBuilder.group({
+        descripcion: new FormControl('', Validators.required),
+  
       });
-    });
-  }
-  async presentLoading(loading) {
-    return await loading.present();
-  }
+    }
+  
+    onSubmit(value){
+      let data = {
+        descripcion: value.descripcion,
+       
+       
+      }
+      this.firebaseService.crearCiudad(data)
+      .then(
+        res => {
+          this.router.navigate(["/home"]);
+        }
+      )
+    }
 }

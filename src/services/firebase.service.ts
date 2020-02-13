@@ -72,7 +72,7 @@ export class FirebaseService {
       this.afAuth.user.subscribe(currentUser => {
       
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('ciudad').snapshotChanges();
+          this.snapshotChangesSubscription = this.afs.collection('ciudad').snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
       })
@@ -184,8 +184,10 @@ export class FirebaseService {
   crearCiudad(value) {
     return new Promise<any>((resolve, reject) => {
       const currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('ciudad').add({
+      this.afs.collection('ciudad').add({
+        //provincia: value.provincia,
         descripcion: value.descripcion,
+
       })
       .then(
         res => resolve(res),
