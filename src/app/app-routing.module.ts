@@ -48,6 +48,10 @@ const routes: Routes = [
   {
     path: 'nuevo-pais',
     loadChildren: () => import('./nuevo-pais/nuevo-pais.module').then( m => m.NuevoPaisPageModule)
+  },
+  {
+    path: 'nueva-provincia',
+    loadChildren: () => import('./nueva-provincia/nueva-provincia.module').then( m => m.NuevaProvinciaPageModule)
   }
   // {
   //   path: '',
