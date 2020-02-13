@@ -52,6 +52,17 @@ export class FirebaseService {
       })
     })
   }
+  getCiudades() {
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+      
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('ciudad').snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      })
+    })
+  }
 
   getTask(taskId){
     console.log("entro a los servicios firebase");
@@ -136,6 +147,18 @@ export class FirebaseService {
         err => reject(err)
       )
     })
+  }
+  crearCiudad(value) {
+    return new Promise<any>((resolve, reject) => {
+      const currentUser = firebase.auth().currentUser;
+      this.afs.collection('people').doc(currentUser.uid).collection('ciudad').add({
+        descripcion: value.descripcion,
+      })
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
   }
 
   encodeImageUri(imageUri, callback) {
