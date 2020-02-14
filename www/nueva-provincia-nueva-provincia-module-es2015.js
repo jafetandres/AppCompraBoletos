@@ -7,11 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
 module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"/provincia\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Nueva Provincia</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  \n       \n      \n      <form [formGroup]=\"validations_form\" (ngSubmit)=\"onSubmit(validations_form.value)\">\n          <ion-item>\n          <ion-label>Seleccione un Pais</ion-label>\n          <ion-select formControlName=\"pais\" >\n            <ion-select-option *ngFor=\"let item of items\" >{{item.payload.doc.data().descripcion}}</ion-select-option>\n          </ion-select>\n        </ion-item>\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Descripcion</ion-label>\n            <ion-input type=\"text\" formControlName=\"descripcion\"></ion-input>\n        </ion-item>\n\n        <ion-button class=\"submit-btn\" expand=\"block\" type=\"submit\" [disabled]=\"!validations_form.valid\">Crear</ion-button>\n    </form>\n\n\n</ion-content>"
-=======
-module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button defaultHref=\"/provincia\"></ion-back-button>\n      </ion-buttons>\n      <ion-title>Nueva Provincia</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n<ion-content>\n  \n       \n      \n      <form [formGroup]=\"validations_form\" (ngSubmit)=\"onSubmit(validations_form.value)\">\n          <ion-item>\n          <ion-label>Pais</ion-label>\n          <ion-select formControlName=\"pais\" >\n            <ion-select-option *ngFor=\"let item of items\" >{{item.payload.doc.data().descripcion}}</ion-select-option>\n          </ion-select>\n        </ion-item>\n          <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Descripcion</ion-label>\n            <ion-input type=\"text\" formControlName=\"descripcion\"></ion-input>\n          </ion-item>\n         \n          <ion-button class=\"submit-btn\" expand=\"block\" type=\"submit\" [disabled]=\"!validations_form.valid\">Crear</ion-button>\n        </form>\n\n      \n</ion-content>\n"
->>>>>>> 170bc93925117ff23ae025595418aba420edd991
 
 /***/ }),
 
@@ -136,10 +132,7 @@ let NuevaProvinciaPage = class NuevaProvinciaPage {
                 routeData['data'].subscribe(data => {
                     loading.dismiss();
                     this.items = data;
-<<<<<<< HEAD
                     console.log(this.items.length);
-=======
->>>>>>> 170bc93925117ff23ae025595418aba420edd991
                 });
             });
         });

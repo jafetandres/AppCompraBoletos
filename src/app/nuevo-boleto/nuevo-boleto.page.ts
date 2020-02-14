@@ -86,7 +86,7 @@ export class NuevoBoletoPage implements OnInit {
     this.firebaseService.crearBoleto(data)
     .then(
       res => {
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/boleto"]);
       }
     )
   }

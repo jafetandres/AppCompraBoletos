@@ -470,43 +470,23 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     {
         path: '',
-<<<<<<< HEAD
-        loadChildren: function () { return Promise.all(/*! import() | login-login-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("login-login-module")]).then(__webpack_require__.bind(null, /*! ./login/login.module */ "./src/app/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | login-login-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("login-login-module")]).then(__webpack_require__.bind(null, /*! ./login/login.module */ "./src/app/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); }
     },
     {
         path: 'home',
-        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
     },
     {
         path: 'register',
-        loadChildren: function () { return Promise.all(/*! import() | register-register-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("register-register-module")]).then(__webpack_require__.bind(null, /*! ./register/register.module */ "./src/app/register/register.module.ts")).then(function (m) { return m.RegisterPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | register-register-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("register-register-module")]).then(__webpack_require__.bind(null, /*! ./register/register.module */ "./src/app/register/register.module.ts")).then(function (m) { return m.RegisterPageModule; }); }
     },
     {
         path: 'new-task',
-        loadChildren: function () { return Promise.all(/*! import() | new-task-new-task-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("new-task-new-task-module")]).then(__webpack_require__.bind(null, /*! ./new-task/new-task.module */ "./src/app/new-task/new-task.module.ts")).then(function (m) { return m.NewTaskPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | new-task-new-task-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("new-task-new-task-module")]).then(__webpack_require__.bind(null, /*! ./new-task/new-task.module */ "./src/app/new-task/new-task.module.ts")).then(function (m) { return m.NewTaskPageModule; }); }
     },
     {
         path: 'details/:id',
-        loadChildren: function () { return Promise.all(/*! import() | details-details-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("details-details-module")]).then(__webpack_require__.bind(null, /*! ./details/details.module */ "./src/app/details/details.module.ts")).then(function (m) { return m.DetailsPageModule; }); }
-=======
-        loadChildren: function () { return Promise.all(/*! import() | login-login-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("login-login-module")]).then(__webpack_require__.bind(null, /*! ./login/login.module */ "./src/app/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); }
-    },
-    {
-        path: 'home',
-        loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
-    },
-    {
-        path: 'register',
-        loadChildren: function () { return Promise.all(/*! import() | register-register-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("register-register-module")]).then(__webpack_require__.bind(null, /*! ./register/register.module */ "./src/app/register/register.module.ts")).then(function (m) { return m.RegisterPageModule; }); }
-    },
-    {
-        path: 'new-task',
-        loadChildren: function () { return Promise.all(/*! import() | new-task-new-task-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("new-task-new-task-module")]).then(__webpack_require__.bind(null, /*! ./new-task/new-task.module */ "./src/app/new-task/new-task.module.ts")).then(function (m) { return m.NewTaskPageModule; }); }
-    },
-    {
-        path: 'details/:id',
-        loadChildren: function () { return Promise.all(/*! import() | details-details-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("details-details-module")]).then(__webpack_require__.bind(null, /*! ./details/details.module */ "./src/app/details/details.module.ts")).then(function (m) { return m.DetailsPageModule; }); }
->>>>>>> 170bc93925117ff23ae025595418aba420edd991
+        loadChildren: function () { return Promise.all(/*! import() | details-details-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("details-details-module")]).then(__webpack_require__.bind(null, /*! ./details/details.module */ "./src/app/details/details.module.ts")).then(function (m) { return m.DetailsPageModule; }); }
     },
     {
         path: 'location-select',
@@ -514,83 +494,63 @@ var routes = [
     },
     {
         path: 'ruta',
-<<<<<<< HEAD
-        loadChildren: function () { return Promise.all(/*! import() | ruta-ruta-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("ruta-ruta-module")]).then(__webpack_require__.bind(null, /*! ./ruta/ruta.module */ "./src/app/ruta/ruta.module.ts")).then(function (m) { return m.RutaPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | ruta-ruta-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("ruta-ruta-module")]).then(__webpack_require__.bind(null, /*! ./ruta/ruta.module */ "./src/app/ruta/ruta.module.ts")).then(function (m) { return m.RutaPageModule; }); }
     },
     {
         path: 'nueva-ruta',
-        loadChildren: function () { return Promise.all(/*! import() | nueva-ruta-nueva-ruta-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("nueva-ruta-nueva-ruta-module")]).then(__webpack_require__.bind(null, /*! ./nueva-ruta/nueva-ruta.module */ "./src/app/nueva-ruta/nueva-ruta.module.ts")).then(function (m) { return m.NuevaRutaPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | nueva-ruta-nueva-ruta-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("nueva-ruta-nueva-ruta-module")]).then(__webpack_require__.bind(null, /*! ./nueva-ruta/nueva-ruta.module */ "./src/app/nueva-ruta/nueva-ruta.module.ts")).then(function (m) { return m.NuevaRutaPageModule; }); }
     },
     {
         path: 'provincia',
-        loadChildren: function () { return Promise.all(/*! import() | provincia-provincia-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("provincia-provincia-module")]).then(__webpack_require__.bind(null, /*! ./provincia/provincia.module */ "./src/app/provincia/provincia.module.ts")).then(function (m) { return m.ProvinciaPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | provincia-provincia-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("provincia-provincia-module")]).then(__webpack_require__.bind(null, /*! ./provincia/provincia.module */ "./src/app/provincia/provincia.module.ts")).then(function (m) { return m.ProvinciaPageModule; }); }
     },
     {
         path: 'pais',
-        loadChildren: function () { return Promise.all(/*! import() | pais-pais-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("pais-pais-module")]).then(__webpack_require__.bind(null, /*! ./pais/pais.module */ "./src/app/pais/pais.module.ts")).then(function (m) { return m.PaisPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pais-pais-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("pais-pais-module")]).then(__webpack_require__.bind(null, /*! ./pais/pais.module */ "./src/app/pais/pais.module.ts")).then(function (m) { return m.PaisPageModule; }); }
     },
     {
         path: 'ciudad',
-        loadChildren: function () { return Promise.all(/*! import() | ciudad-ciudad-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("ciudad-ciudad-module")]).then(__webpack_require__.bind(null, /*! ./ciudad/ciudad.module */ "./src/app/ciudad/ciudad.module.ts")).then(function (m) { return m.CiudadPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | ciudad-ciudad-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("ciudad-ciudad-module")]).then(__webpack_require__.bind(null, /*! ./ciudad/ciudad.module */ "./src/app/ciudad/ciudad.module.ts")).then(function (m) { return m.CiudadPageModule; }); }
     },
     {
         path: 'nueva-ciudad',
-        loadChildren: function () { return Promise.all(/*! import() | nueva-ciudad-nueva-ciudad-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("nueva-ciudad-nueva-ciudad-module")]).then(__webpack_require__.bind(null, /*! ./nueva-ciudad/nueva-ciudad.module */ "./src/app/nueva-ciudad/nueva-ciudad.module.ts")).then(function (m) { return m.NuevaCiudadPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | nueva-ciudad-nueva-ciudad-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("nueva-ciudad-nueva-ciudad-module")]).then(__webpack_require__.bind(null, /*! ./nueva-ciudad/nueva-ciudad.module */ "./src/app/nueva-ciudad/nueva-ciudad.module.ts")).then(function (m) { return m.NuevaCiudadPageModule; }); }
     },
     {
         path: 'nuevo-pais',
-        loadChildren: function () { return Promise.all(/*! import() | nuevo-pais-nuevo-pais-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("nuevo-pais-nuevo-pais-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-pais/nuevo-pais.module */ "./src/app/nuevo-pais/nuevo-pais.module.ts")).then(function (m) { return m.NuevoPaisPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | nuevo-pais-nuevo-pais-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("nuevo-pais-nuevo-pais-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-pais/nuevo-pais.module */ "./src/app/nuevo-pais/nuevo-pais.module.ts")).then(function (m) { return m.NuevoPaisPageModule; }); }
     },
     {
         path: 'vehiculo',
-        loadChildren: function () { return Promise.all(/*! import() | vehiculo-vehiculo-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("vehiculo-vehiculo-module")]).then(__webpack_require__.bind(null, /*! ./vehiculo/vehiculo.module */ "./src/app/vehiculo/vehiculo.module.ts")).then(function (m) { return m.VehiculoPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | vehiculo-vehiculo-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("vehiculo-vehiculo-module")]).then(__webpack_require__.bind(null, /*! ./vehiculo/vehiculo.module */ "./src/app/vehiculo/vehiculo.module.ts")).then(function (m) { return m.VehiculoPageModule; }); }
     },
     {
         path: 'nueva-provincia',
-        loadChildren: function () { return Promise.all(/*! import() | nueva-provincia-nueva-provincia-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("nueva-provincia-nueva-provincia-module")]).then(__webpack_require__.bind(null, /*! ./nueva-provincia/nueva-provincia.module */ "./src/app/nueva-provincia/nueva-provincia.module.ts")).then(function (m) { return m.NuevaProvinciaPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | nueva-provincia-nueva-provincia-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("nueva-provincia-nueva-provincia-module")]).then(__webpack_require__.bind(null, /*! ./nueva-provincia/nueva-provincia.module */ "./src/app/nueva-provincia/nueva-provincia.module.ts")).then(function (m) { return m.NuevaProvinciaPageModule; }); }
+    },
+    {
+        path: 'vehiculo',
+        loadChildren: function () { return Promise.all(/*! import() | vehiculo-vehiculo-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("vehiculo-vehiculo-module")]).then(__webpack_require__.bind(null, /*! ./vehiculo/vehiculo.module */ "./src/app/vehiculo/vehiculo.module.ts")).then(function (m) { return m.VehiculoPageModule; }); }
     },
     {
         path: 'boleto',
-        loadChildren: function () { return Promise.all(/*! import() | boleto-boleto-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("boleto-boleto-module")]).then(__webpack_require__.bind(null, /*! ./boleto/boleto.module */ "./src/app/boleto/boleto.module.ts")).then(function (m) { return m.BoletoPageModule; }); }
-    },
-    {
-        path: 'nuevo-boleto',
-        loadChildren: function () { return Promise.all(/*! import() | nuevo-boleto-nuevo-boleto-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("nuevo-boleto-nuevo-boleto-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-boleto/nuevo-boleto.module */ "./src/app/nuevo-boleto/nuevo-boleto.module.ts")).then(function (m) { return m.NuevoBoletoPageModule; }); }
-    },
-    {
-        path: 'nuevo-vehiculo',
-        loadChildren: function () { return Promise.all(/*! import() | nuevo-vehiculo-nuevo-vehiculo-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("nuevo-vehiculo-nuevo-vehiculo-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-vehiculo/nuevo-vehiculo.module */ "./src/app/nuevo-vehiculo/nuevo-vehiculo.module.ts")).then(function (m) { return m.NuevoVehiculoPageModule; }); }
-=======
-        loadChildren: function () { return Promise.all(/*! import() | ruta-ruta-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("ruta-ruta-module")]).then(__webpack_require__.bind(null, /*! ./ruta/ruta.module */ "./src/app/ruta/ruta.module.ts")).then(function (m) { return m.RutaPageModule; }); }
-    },
-    {
-        path: 'nueva-ruta',
-        loadChildren: function () { return Promise.all(/*! import() | nueva-ruta-nueva-ruta-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("nueva-ruta-nueva-ruta-module")]).then(__webpack_require__.bind(null, /*! ./nueva-ruta/nueva-ruta.module */ "./src/app/nueva-ruta/nueva-ruta.module.ts")).then(function (m) { return m.NuevaRutaPageModule; }); }
-    },
-    {
-        path: 'provincia',
-        loadChildren: function () { return Promise.all(/*! import() | provincia-provincia-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("provincia-provincia-module")]).then(__webpack_require__.bind(null, /*! ./provincia/provincia.module */ "./src/app/provincia/provincia.module.ts")).then(function (m) { return m.ProvinciaPageModule; }); }
-    },
-    {
-        path: 'pais',
-        loadChildren: function () { return Promise.all(/*! import() | pais-pais-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("pais-pais-module")]).then(__webpack_require__.bind(null, /*! ./pais/pais.module */ "./src/app/pais/pais.module.ts")).then(function (m) { return m.PaisPageModule; }); }
-    },
-    {
-        path: 'ciudad',
-        loadChildren: function () { return Promise.all(/*! import() | ciudad-ciudad-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("ciudad-ciudad-module")]).then(__webpack_require__.bind(null, /*! ./ciudad/ciudad.module */ "./src/app/ciudad/ciudad.module.ts")).then(function (m) { return m.CiudadPageModule; }); }
-    },
-    {
-        path: 'nuevo-pais',
-        loadChildren: function () { return Promise.all(/*! import() | nuevo-pais-nuevo-pais-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("nuevo-pais-nuevo-pais-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-pais/nuevo-pais.module */ "./src/app/nuevo-pais/nuevo-pais.module.ts")).then(function (m) { return m.NuevoPaisPageModule; }); }
-    },
-    {
-        path: 'nueva-provincia',
-        loadChildren: function () { return Promise.all(/*! import() | nueva-provincia-nueva-provincia-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("nueva-provincia-nueva-provincia-module")]).then(__webpack_require__.bind(null, /*! ./nueva-provincia/nueva-provincia.module */ "./src/app/nueva-provincia/nueva-provincia.module.ts")).then(function (m) { return m.NuevaProvinciaPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | boleto-boleto-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("boleto-boleto-module")]).then(__webpack_require__.bind(null, /*! ./boleto/boleto.module */ "./src/app/boleto/boleto.module.ts")).then(function (m) { return m.BoletoPageModule; }); }
     },
     {
         path: 'perfil',
-        loadChildren: function () { return Promise.all(/*! import() | perfil-perfil-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("perfil-perfil-module")]).then(__webpack_require__.bind(null, /*! ./perfil/perfil.module */ "./src/app/perfil/perfil.module.ts")).then(function (m) { return m.PerfilPageModule; }); }
->>>>>>> 170bc93925117ff23ae025595418aba420edd991
+        loadChildren: function () { return Promise.all(/*! import() | perfil-perfil-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("perfil-perfil-module")]).then(__webpack_require__.bind(null, /*! ./perfil/perfil.module */ "./src/app/perfil/perfil.module.ts")).then(function (m) { return m.PerfilPageModule; }); }
+    },
+    {
+        path: 'actualizar-pais/:id',
+        loadChildren: function () { return Promise.all(/*! import() | actualizar-pais-actualizar-pais-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("actualizar-pais-actualizar-pais-module")]).then(__webpack_require__.bind(null, /*! ./actualizar-pais/actualizar-pais.module */ "./src/app/actualizar-pais/actualizar-pais.module.ts")).then(function (m) { return m.ActualizarPaisPageModule; }); }
+    },
+    {
+        path: 'nuevo-boleto',
+        loadChildren: function () { return Promise.all(/*! import() | nuevo-boleto-nuevo-boleto-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("nuevo-boleto-nuevo-boleto-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-boleto/nuevo-boleto.module */ "./src/app/nuevo-boleto/nuevo-boleto.module.ts")).then(function (m) { return m.NuevoBoletoPageModule; }); }
+    },
+    {
+        path: 'nuevo-vehiculo',
+        loadChildren: function () { return Promise.all(/*! import() | nuevo-vehiculo-nuevo-vehiculo-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("nuevo-vehiculo-nuevo-vehiculo-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-vehiculo/nuevo-vehiculo.module */ "./src/app/nuevo-vehiculo/nuevo-vehiculo.module.ts")).then(function (m) { return m.NuevoVehiculoPageModule; }); }
     }
     // {
     //   path: '',
