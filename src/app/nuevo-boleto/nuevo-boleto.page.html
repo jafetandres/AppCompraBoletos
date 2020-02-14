@@ -11,7 +11,7 @@
   <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
     <ion-item>
       <ion-label position="floating" color="primary">Fecha</ion-label>
-      <ion-input type="text" formControlName="fecha"></ion-input>
+      <ion-datetime type="text" formControlName="fecha"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label position="floating" color="primary">Estado</ion-label>
@@ -19,12 +19,12 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating" color="primary">Valor</ion-label>
-      <ion-input type="text" formControlName="valor"></ion-input>
+      <ion-input type="number" formControlName="valor"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Seleccione un Vehiculo</ion-label>
       <ion-select formControlName="vehiculo" >
-        <ion-select-option *ngFor="let item of items" >{{ item.payload.doc.data().vehiculo }}</ion-select-option>
+        <ion-select-option *ngFor="let item of items" >{{ item.payload.doc.data().placa }}</ion-select-option>
       </ion-select>
     </ion-item>
     

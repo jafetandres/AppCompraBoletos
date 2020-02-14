@@ -104,8 +104,21 @@ export class FirebaseService {
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          
           this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/tasks/' + taskId).valueChanges()
+          .subscribe(snapshots => {
+            resolve(snapshots);
+          }, err => {
+            reject(err)
+          })
+        }
+      })
+    });
+  }
+  getVehiculo(id){
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.doc<any>('vehiculo/' + id).valueChanges()
           .subscribe(snapshots => {
             resolve(snapshots);
           }, err => {
@@ -199,8 +212,21 @@ export class FirebaseService {
     })
   }
 
+actualizarVehiculo(key, value){ 
+  return new Promise<any>((resolve, reject) => {
+    let currentUser = firebase.auth().currentUser;
+    this.afs.collection('vehiculo').doc(key).set(value)
+    .then(
+      res => resolve(res),
+      err => reject(err)
+    );
+  });
+}
+    
+      
 
-  actualizarPais(id, value){
+
+actualizarPais(id, value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
       this.afs.collection('pais').doc(id).set(value)
@@ -210,17 +236,15 @@ export class FirebaseService {
       )
     })
   }
+
   actualizarPerfil(imageURI,value){
 
     var user = firebase.auth().currentUser;
     console.log("ruta esta1: "+value.photoURL);
     console.log("ruta esta2: "+imageURI);
     return new Promise<any>((resolve, reject) => {
-     
       let currentUser = firebase.auth().currentUser;
-  
       currentUser.updateProfile({
-        
         photoURL: value.photoURL,
         displayName: value.displayName
 
@@ -266,6 +290,17 @@ export class FirebaseService {
       );
     });
 
+  }
+
+  deleteBoleto(Key) {
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('boleto').doc(Key).delete()
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
   }
 
   createTask(value){
@@ -365,9 +400,8 @@ export class FirebaseService {
       this.afs.collection('boleto').add({
         fecha: value.fecha,
         estado: value.estado,
-        descripcion: value.descripcion,
         valor: value.valor,
-        vehiculo:value.vehiculo
+        vehiculo: value.vehiculo
 
       })
       .then(

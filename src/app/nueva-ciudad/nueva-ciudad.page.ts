@@ -42,25 +42,20 @@ export class NuevaCiudadPage implements OnInit {
     })
   }
     resetFields(){
-  
       this.validations_form = this.formBuilder.group({
         provincia: new FormControl('', Validators.required),
         descripcion: new FormControl('', Validators.required),
-  
       });
     }
-  
     onSubmit(value){
       let data = {
         provincia: value.provincia,
         descripcion: value.descripcion,
-       
-       
       }
       this.firebaseService.crearCiudad(data)
       .then(
         res => {
-          this.router.navigate(["/home"]);
+          this.router.navigate(["/ciudad"]);
         }
       )
     }

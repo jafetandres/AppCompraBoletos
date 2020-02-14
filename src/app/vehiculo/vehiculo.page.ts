@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FirebaseService } from 'src/services/firebase.service';
-
+import { NuevoVehiculoPage } from '../nuevo-vehiculo/nuevo-vehiculo.page';
 @Component({
   selector: 'app-vehiculo',
   templateUrl: './vehiculo.page.html',
@@ -12,6 +12,7 @@ import { FirebaseService } from 'src/services/firebase.service';
 export class VehiculoPage implements OnInit {
   items: Array<any>;
   constructor(
+    public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     private authService: AuthService,
     private router: Router,
@@ -52,11 +53,11 @@ export class VehiculoPage implements OnInit {
     });
   }
 
-actualizar( vehicle ){
-  console.log("Lega correcto", vehicle);
+actualizar(vehiculoId){
+  console.log("Lega correcto", vehiculoId);
+  this.router.navigate(['/actualizar-vehiculo', vehiculoId]);
 }
 eiminar(vehicle ){
-  console.log("Lega correcto", vehicle);
   this.firebaseService.deleteVehicle(vehicle);
 }
 
