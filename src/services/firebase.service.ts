@@ -155,6 +155,17 @@ export class FirebaseService {
     });
   }
 
+  deleteBoleto(Key) {
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('boleto').doc(Key).delete()
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
+  }
+
   createTask(value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
@@ -252,9 +263,8 @@ export class FirebaseService {
       this.afs.collection('boleto').add({
         fecha: value.fecha,
         estado: value.estado,
-        descripcion: value.descripcion,
         valor: value.valor,
-        vehiculo:value.vehiculo
+        vehiculo: value.vehiculo
 
       })
       .then(

@@ -53,15 +53,12 @@ const routes: Routes = [
     path: 'nuevo-pais',
     loadChildren: () => import('./nuevo-pais/nuevo-pais.module').then( m => m.NuevoPaisPageModule)
   },
+  
   {
-    path: 'nueva-provincia',
-    loadChildren: () => import('./nueva-provincia/nueva-provincia.module').then( m => m.NuevaProvinciaPageModule)
-  },  {
     path: 'vehiculo',
     loadChildren: () => import('./vehiculo/vehiculo.module').then( m => m.VehiculoPageModule)
   },
   {
-<<<<<<< HEAD
     path: 'nueva-provincia',
     loadChildren: () => import('./nueva-provincia/nueva-provincia.module').then( m => m.NuevaProvinciaPageModule)
   },
@@ -72,10 +69,10 @@ const routes: Routes = [
   {
     path: 'nuevo-boleto',
     loadChildren: () => import('./nuevo-boleto/nuevo-boleto.module').then( m => m.NuevoBoletoPageModule)
-=======
+  },
+  {
     path: 'nuevo-vehiculo',
     loadChildren: () => import('./nuevo-vehiculo/nuevo-vehiculo.module').then( m => m.NuevoVehiculoPageModule)
->>>>>>> 45d8d645ae4637d08d704d348db6f4178883b2ce
   }
 
 

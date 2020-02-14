@@ -77,13 +77,13 @@ export class NuevoBoletoPage implements OnInit {
 
   onSubmit(value){
     let data = {
-      fecha: value.descripcion,
-      estado: value.precio,
-      valor: value.origen,
-      vehiculo: value.destino
+      fecha: value.fecha,
+      estado: value.estado,
+      valor: value.valor,
+      vehiculo: value.vehiculo
      
     }
-    this.firebaseService.crearRuta(data)
+    this.firebaseService.crearBoleto(data)
     .then(
       res => {
         this.router.navigate(["/home"]);

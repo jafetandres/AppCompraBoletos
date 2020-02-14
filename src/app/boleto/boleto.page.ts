@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FirebaseService } from 'src/services/firebase.service';
 
 @Component({
   selector: 'app-boleto',
@@ -16,7 +17,9 @@ export class BoletoPage implements OnInit {
     public loadingCtrl: LoadingController,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private firebaseService: FirebaseService,
+
   ) { }
 
   ngOnInit() {
@@ -51,6 +54,11 @@ export class BoletoPage implements OnInit {
     }, err => {
       console.log(err);
     })
+  }
+
+  eliminar(boleto){
+    console.log("Lega correcto", boleto);
+    this.firebaseService.deleteBoleto(boleto);
   }
 
 }
