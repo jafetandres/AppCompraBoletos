@@ -18,7 +18,7 @@
   
       <div *ngIf="items.length > 0" class="list-mini">
         <ion-list>
-          <ion-item *ngFor="let item of items" >
+          <ion-item *ngFor="let item of items"  [routerLink]="['/actualizar-pais', item.payload.doc.id]">
            
             <ion-label>{{item.payload.doc.data().descripcion}}</ion-label>
             

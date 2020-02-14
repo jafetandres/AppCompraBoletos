@@ -8,7 +8,6 @@ export class NuevaCiudadResolver implements Resolve<any> {
   constructor(private firebaseService: FirebaseService) {
   }
   resolve() {
-    
     return this.firebaseService.getProvincias();
   }
 }

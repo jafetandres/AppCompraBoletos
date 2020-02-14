@@ -49,6 +49,7 @@ export class NuevaRutaPage implements OnInit {
       });
     });
   }
+
   async presentLoading(loading) {
     return await loading.present();
   }
@@ -78,7 +79,7 @@ export class NuevaRutaPage implements OnInit {
       descripcion: value.descripcion,
       precio: value.precio,
       origen: value.origen,
-      destino: value.origen
+      destino: value.destino
      
     }
     this.firebaseService.crearRuta(data)

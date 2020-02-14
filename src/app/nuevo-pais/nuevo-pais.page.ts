@@ -41,7 +41,7 @@ export class NuevoPaisPage implements OnInit {
     this.firebaseService.crearPais(data)
     .then(
       res => {
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/pais"]);
       }
     )
   }

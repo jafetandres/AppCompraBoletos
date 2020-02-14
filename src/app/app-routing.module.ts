@@ -61,9 +61,23 @@ const routes: Routes = [
     path: 'vehiculo',
     loadChildren: () => import('./vehiculo/vehiculo.module').then( m => m.VehiculoPageModule)
   },
+
   {
-    path: 'nuevo-vehiculo',
-    loadChildren: () => import('./nuevo-vehiculo/nuevo-vehiculo.module').then( m => m.NuevoVehiculoPageModule)
+    path: 'boleto',
+    loadChildren: () => import('./boleto/boleto.module').then( m => m.BoletoPageModule)
+  },
+
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'actualizar-pais/:id',
+    loadChildren: () => import('./actualizar-pais/actualizar-pais.module').then( m => m.ActualizarPaisPageModule)
+  }
+  ,{
+    path: 'nuevo-boleto',
+    loadChildren: () => import('./nuevo-boleto/nuevo-boleto.module').then( m => m.NuevoBoletoPageModule)
   }
   ,
   {
@@ -74,14 +88,6 @@ const routes: Routes = [
     path: 'actualizar-vehiculo/:id',
     loadChildren: () => import('./actualizar-vehiculo/actualizar-vehiculo.module').then( m => m.ActualizarVehiculoPageModule)
   }
-
-
-
-  // {
-  //   path: '',
-  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  // }
-  
 ];
 @NgModule({
   imports: [

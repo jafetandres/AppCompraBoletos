@@ -15,12 +15,12 @@ export class RegisterPage implements OnInit {
 
   validation_messages = {
     'email': [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Enter a valid email.' }
+      { type: 'required', message: 'Correo es obligatio.' },
+      { type: 'pattern', message: 'Ingrese correo.' }
     ],
     'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+      { type: 'required', message: 'Contraseña es obligatoria.' },
+      { type: 'minlength', message: 'La contraseña debe ser mayor a 5 caracteres.' }
     ]
    };
 
@@ -43,13 +43,15 @@ export class RegisterPage implements OnInit {
       ])),
     });
   }
+  
 
   tryRegister(value){
+
     this.authService.doRegister(value)
      .then(res => {
        console.log(res);
        this.errorMessage = "";
-       this.successMessage = "Your account has been created. Please log in.";
+       this.successMessage = "Tu cuenta ha sido creada. Ingresa al Login.";
      }, err => {
        console.log(err);
        this.errorMessage = err.message;

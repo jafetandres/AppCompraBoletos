@@ -19,13 +19,13 @@
     </ion-item>
     <ion-item>
       <ion-label>Seleccione una Ciudad de Origen</ion-label>
-      <ion-select formControlName="ciudadO" >
+      <ion-select formControlName="origen" >
         <ion-select-option *ngFor="let item of items" >{{ item.payload.doc.data().descripcion }}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
     <ion-label>Seleccione una Ciudad de Destino</ion-label>
-      <ion-select formControlName="ciudadD" >
+      <ion-select formControlName="destino" >
         <ion-select-option *ngFor="let item of items" >{{ item.payload.doc.data().descripcion }}</ion-select-option>
       </ion-select>
     </ion-item>
