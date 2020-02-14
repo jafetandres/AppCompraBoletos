@@ -16,7 +16,8 @@ export class HomePage implements OnInit {
     public loadingCtrl: LoadingController,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+   
   ) { }
 
   ngOnInit() {
@@ -25,6 +26,8 @@ export class HomePage implements OnInit {
     }
   
   }
+
+
 
   async getData(){
     const loading = await this.loadingCtrl.create({
