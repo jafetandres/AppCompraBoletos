@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { NewTaskPage } from './new-task.page';
 
+
 const routes: Routes = [
   {
     path: '',

@@ -7,7 +7,11 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-buttons slot=\"end\">\n            <ion-button [routerLink]=\"['/nueva-ciudad']\">\n                <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n        <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"/home\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Ciudad</ion-title>\n    </ion-toolbar>\n</ion-header>\n<ion-content>\n    <ion-content *ngIf=\"items\" class=\"list-mini-content\" padding>\n        <div *ngIf=\"items.length > 0\" class=\"list-mini\">\n            <ion-list>\n                <ion-item *ngFor=\"let item of items\">\n                    <ion-label>{{item.payload.doc.data().descripcion}}</ion-label>\n                    <ion-label>{{item.payload.doc.data()}}</ion-label>\n                </ion-item>\n            </ion-list>\n        </div>\n        <div *ngIf=\"items.length == 0\" class=\"empty-list\">\n            Porfavor ingrese una ciuadad.\n        </div>\n    </ion-content>\n\n</ion-content>"
+=======
+module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-buttons slot=\"end\">\n            <ion-button [routerLink]=\"['/nueva-ciudad']\">\n                <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n        <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"/home\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Ciudad</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <ion-content *ngIf=\"items\" class=\"list-mini-content\" padding>\n\n\n        <div *ngIf=\"items.length > 0\" class=\"list-mini\">\n            <ion-list>\n                <ion-item *ngFor=\"let item of items\">\n\n                    <ion-label>{{item.payload.doc.data().descripcion}}</ion-label>\n\n                </ion-item>\n            </ion-list>\n        </div>\n        <div *ngIf=\"items.length == 0\" class=\"empty-list\">\n            Please create your first task.\n        </div>\n    </ion-content>\n\n</ion-content>"
+>>>>>>> 170bc93925117ff23ae025595418aba420edd991
 
 /***/ }),
 
@@ -129,7 +133,10 @@ var CiudadPage = /** @class */ (function () {
                             routeData['data'].subscribe(function (data) {
                                 loading.dismiss();
                                 _this.items = data;
+<<<<<<< HEAD
                                 console.log(_this.items);
+=======
+>>>>>>> 170bc93925117ff23ae025595418aba420edd991
                             });
                         });
                         return [2 /*return*/];
@@ -201,7 +208,11 @@ var CiudadResolver = /** @class */ (function () {
         this.firebaseService = firebaseService;
     }
     CiudadResolver.prototype.resolve = function () {
+<<<<<<< HEAD
         return this.firebaseService.getCiudades();
+=======
+        return this.firebaseService.getRutas();
+>>>>>>> 170bc93925117ff23ae025595418aba420edd991
     };
     CiudadResolver.ctorParameters = function () { return [
         { type: src_services_firebase_service__WEBPACK_IMPORTED_MODULE_2__["FirebaseService"] }

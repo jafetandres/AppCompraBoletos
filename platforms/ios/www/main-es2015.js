@@ -464,6 +464,7 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
+<<<<<<< HEAD
         loadChildren: () => Promise.all(/*! import() | login-login-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("login-login-module")]).then(__webpack_require__.bind(null, /*! ./login/login.module */ "./src/app/login/login.module.ts")).then(m => m.LoginPageModule)
     },
     {
@@ -481,6 +482,25 @@ const routes = [
     {
         path: 'details/:id',
         loadChildren: () => Promise.all(/*! import() | details-details-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("details-details-module")]).then(__webpack_require__.bind(null, /*! ./details/details.module */ "./src/app/details/details.module.ts")).then(m => m.DetailsPageModule)
+=======
+        loadChildren: () => Promise.all(/*! import() | login-login-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("login-login-module")]).then(__webpack_require__.bind(null, /*! ./login/login.module */ "./src/app/login/login.module.ts")).then(m => m.LoginPageModule)
+    },
+    {
+        path: 'home',
+        loadChildren: () => Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(m => m.HomePageModule)
+    },
+    {
+        path: 'register',
+        loadChildren: () => Promise.all(/*! import() | register-register-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("register-register-module")]).then(__webpack_require__.bind(null, /*! ./register/register.module */ "./src/app/register/register.module.ts")).then(m => m.RegisterPageModule)
+    },
+    {
+        path: 'new-task',
+        loadChildren: () => Promise.all(/*! import() | new-task-new-task-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("new-task-new-task-module")]).then(__webpack_require__.bind(null, /*! ./new-task/new-task.module */ "./src/app/new-task/new-task.module.ts")).then(m => m.NewTaskPageModule)
+    },
+    {
+        path: 'details/:id',
+        loadChildren: () => Promise.all(/*! import() | details-details-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("details-details-module")]).then(__webpack_require__.bind(null, /*! ./details/details.module */ "./src/app/details/details.module.ts")).then(m => m.DetailsPageModule)
+>>>>>>> 170bc93925117ff23ae025595418aba420edd991
     },
     {
         path: 'location-select',
@@ -488,6 +508,7 @@ const routes = [
     },
     {
         path: 'ruta',
+<<<<<<< HEAD
         loadChildren: () => Promise.all(/*! import() | ruta-ruta-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("ruta-ruta-module")]).then(__webpack_require__.bind(null, /*! ./ruta/ruta.module */ "./src/app/ruta/ruta.module.ts")).then(m => m.RutaPageModule)
     },
     {
@@ -533,6 +554,37 @@ const routes = [
     {
         path: 'nuevo-vehiculo',
         loadChildren: () => Promise.all(/*! import() | nuevo-vehiculo-nuevo-vehiculo-module */[__webpack_require__.e("default~boleto-boleto-module~ciudad-ciudad-module~details-details-module~home-home-module~login-logi~8dc75aa3"), __webpack_require__.e("common"), __webpack_require__.e("nuevo-vehiculo-nuevo-vehiculo-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-vehiculo/nuevo-vehiculo.module */ "./src/app/nuevo-vehiculo/nuevo-vehiculo.module.ts")).then(m => m.NuevoVehiculoPageModule)
+=======
+        loadChildren: () => Promise.all(/*! import() | ruta-ruta-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("ruta-ruta-module")]).then(__webpack_require__.bind(null, /*! ./ruta/ruta.module */ "./src/app/ruta/ruta.module.ts")).then(m => m.RutaPageModule)
+    },
+    {
+        path: 'nueva-ruta',
+        loadChildren: () => Promise.all(/*! import() | nueva-ruta-nueva-ruta-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("nueva-ruta-nueva-ruta-module")]).then(__webpack_require__.bind(null, /*! ./nueva-ruta/nueva-ruta.module */ "./src/app/nueva-ruta/nueva-ruta.module.ts")).then(m => m.NuevaRutaPageModule)
+    },
+    {
+        path: 'provincia',
+        loadChildren: () => Promise.all(/*! import() | provincia-provincia-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("provincia-provincia-module")]).then(__webpack_require__.bind(null, /*! ./provincia/provincia.module */ "./src/app/provincia/provincia.module.ts")).then(m => m.ProvinciaPageModule)
+    },
+    {
+        path: 'pais',
+        loadChildren: () => Promise.all(/*! import() | pais-pais-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("pais-pais-module")]).then(__webpack_require__.bind(null, /*! ./pais/pais.module */ "./src/app/pais/pais.module.ts")).then(m => m.PaisPageModule)
+    },
+    {
+        path: 'ciudad',
+        loadChildren: () => Promise.all(/*! import() | ciudad-ciudad-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("ciudad-ciudad-module")]).then(__webpack_require__.bind(null, /*! ./ciudad/ciudad.module */ "./src/app/ciudad/ciudad.module.ts")).then(m => m.CiudadPageModule)
+    },
+    {
+        path: 'nuevo-pais',
+        loadChildren: () => Promise.all(/*! import() | nuevo-pais-nuevo-pais-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("nuevo-pais-nuevo-pais-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-pais/nuevo-pais.module */ "./src/app/nuevo-pais/nuevo-pais.module.ts")).then(m => m.NuevoPaisPageModule)
+    },
+    {
+        path: 'nueva-provincia',
+        loadChildren: () => Promise.all(/*! import() | nueva-provincia-nueva-provincia-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("nueva-provincia-nueva-provincia-module")]).then(__webpack_require__.bind(null, /*! ./nueva-provincia/nueva-provincia.module */ "./src/app/nueva-provincia/nueva-provincia.module.ts")).then(m => m.NuevaProvinciaPageModule)
+    },
+    {
+        path: 'perfil',
+        loadChildren: () => Promise.all(/*! import() | perfil-perfil-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("perfil-perfil-module")]).then(__webpack_require__.bind(null, /*! ./perfil/perfil.module */ "./src/app/perfil/perfil.module.ts")).then(m => m.PerfilPageModule)
+>>>>>>> 170bc93925117ff23ae025595418aba420edd991
     }
     // {
     //   path: '',

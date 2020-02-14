@@ -164,7 +164,7 @@ var RegisterPage = /** @class */ (function () {
             .then(function (res) {
             console.log(res);
             _this.errorMessage = "";
-            _this.successMessage = "Your account has been created. Please log in.";
+            _this.successMessage = "Tu cuenta ha sido creada. Ingresa al Login.";
         }, function (err) {
             console.log(err);
             _this.errorMessage = err.message;

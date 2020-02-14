@@ -52,27 +52,48 @@ const routes: Routes = [
   {
     path: 'nuevo-pais',
     loadChildren: () => import('./nuevo-pais/nuevo-pais.module').then( m => m.NuevoPaisPageModule)
+<<<<<<< HEAD
   },
   
   {
     path: 'vehiculo',
     loadChildren: () => import('./vehiculo/vehiculo.module').then( m => m.VehiculoPageModule)
+=======
+>>>>>>> 170bc93925117ff23ae025595418aba420edd991
   },
   {
     path: 'nueva-provincia',
     loadChildren: () => import('./nueva-provincia/nueva-provincia.module').then( m => m.NuevaProvinciaPageModule)
   },
   {
+    path: 'vehiculo',
+    loadChildren: () => import('./vehiculo/vehiculo.module').then( m => m.VehiculoPageModule)
+  },
+
+  {
     path: 'boleto',
     loadChildren: () => import('./boleto/boleto.module').then( m => m.BoletoPageModule)
   },
+
   {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'actualizar-pais/:id',
+    loadChildren: () => import('./actualizar-pais/actualizar-pais.module').then( m => m.ActualizarPaisPageModule)
+  }
+  ,{
     path: 'nuevo-boleto',
     loadChildren: () => import('./nuevo-boleto/nuevo-boleto.module').then( m => m.NuevoBoletoPageModule)
   },
   {
     path: 'nuevo-vehiculo',
     loadChildren: () => import('./nuevo-vehiculo/nuevo-vehiculo.module').then( m => m.NuevoVehiculoPageModule)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 170bc93925117ff23ae025595418aba420edd991
   }
 
 

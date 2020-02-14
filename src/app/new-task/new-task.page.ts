@@ -66,7 +66,7 @@ export class NewTaskPage implements OnInit {
         }).then(
           (results) => {
             for (var i = 0; i < results.length; i++) {
-              this.uploadImageToFirebase(results[i]);
+              // this.uploadImageToFirebase(results[i]);
             }
           }, (err) => console.log(err)
         );
@@ -76,28 +76,28 @@ export class NewTaskPage implements OnInit {
     });
   }
 
-  async uploadImageToFirebase(image){
-    const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
-    });
-    const toast = await this.toastCtrl.create({
-      message: 'Image was updated successfully',
-      duration: 3000
-    });
-    this.presentLoading(loading);
-    let image_src = this.webview.convertFileSrc(image);
-    let randomId = Math.random().toString(36).substr(2, 5);
+  // async uploadImageToFirebase(image){
+  //   const loading = await this.loadingCtrl.create({
+  //     message: 'Please wait...'
+  //   });
+  //   const toast = await this.toastCtrl.create({
+  //     message: 'Image was updated successfully',
+  //     duration: 3000
+  //   });
+  //   this.presentLoading(loading);
+  //   let image_src = this.webview.convertFileSrc(image);
+  //   let randomId = Math.random().toString(36).substr(2, 5);
 
-    //uploads img to firebase storage
-    this.firebaseService.uploadImage(image_src, randomId)
-    .then(photoURL => {
-      this.image = photoURL;
-      loading.dismiss();
-      toast.present();
-    }, err =>{
-      console.log(err);
-    })
-  }
+  //   //uploads img to firebase storage
+  //   this.firebaseService.uploadImage(image_src, randomId)
+  //   .then(photoURL => {
+  //     this.image = photoURL;
+  //     loading.dismiss();
+  //     toast.present();
+  //   }, err =>{
+  //     console.log(err);
+  //   })
+  // }
 
   async presentLoading(loading) {
     return await loading.present();

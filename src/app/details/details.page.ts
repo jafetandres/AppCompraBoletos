@@ -40,6 +40,7 @@ export class DetailsPage implements OnInit {
      if (data) {
        this.item = data;
        this.image = this.item.image;
+       
      }
     })
     this.validations_form = this.formBuilder.group({
@@ -90,52 +91,52 @@ export class DetailsPage implements OnInit {
     await alert.present();
   }
 
-  openImagePicker(){
-    this.imagePicker.hasReadPermission()
-    .then((result) => {
-      if(result == false){
-        // no callbacks required as this opens a popup which returns async
-        this.imagePicker.requestReadPermission();
-      }
-      else if(result == true){
-        this.imagePicker.getPictures({
-          maximumImagesCount: 1
-        }).then(
-          (results) => {
-            for (var i = 0; i < results.length; i++) {
-              this.uploadImageToFirebase(results[i]);
-            }
-          }, (err) => console.log(err)
-        );
-      }
-    }, (err) => {
-      console.log(err);
-    });
-  }
+  // openImagePicker(){
+  //   this.imagePicker.hasReadPermission()
+  //   .then((result) => {
+  //     if(result == false){
+  //       // no callbacks required as this opens a popup which returns async
+  //       this.imagePicker.requestReadPermission();
+  //     }
+  //     else if(result == true){
+  //       this.imagePicker.getPictures({
+  //         maximumImagesCount: 1
+  //       }).then(
+  //         (results) => {
+  //           for (var i = 0; i < results.length; i++) {
+  //             this.uploadImageToFirebase(results[i]);
+  //           }
+  //         }, (err) => console.log(err)
+  //       );
+  //     }
+  //   }, (err) => {
+  //     console.log(err);
+  //   });
+  // }
 
-  async uploadImageToFirebase(image){
-    const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
-    });
-    const toast = await this.toastCtrl.create({
-      message: 'Image was updated successfully',
-      duration: 3000
-    });
-    this.presentLoading(loading);
-    // let image_to_convert = 'http://localhost:8080/_file_' + image;
-    let image_src = this.webview.convertFileSrc(image);
-    let randomId = Math.random().toString(36).substr(2, 5);
+  // async uploadImageToFirebase(image){
+  //   const loading = await this.loadingCtrl.create({
+  //     message: 'Please wait...'
+  //   });
+  //   const toast = await this.toastCtrl.create({
+  //     message: 'Image was updated successfully',
+  //     duration: 3000
+  //   });
+  //   this.presentLoading(loading);
+  //   // let image_to_convert = 'http://localhost:8080/_file_' + image;
+  //   let image_src = this.webview.convertFileSrc(image);
+  //   let randomId = Math.random().toString(36).substr(2, 5);
 
-    //uploads img to firebase storage
-    this.firebaseService.uploadImage(image_src, randomId)
-    .then(photoURL => {
-      this.image = photoURL;
-      loading.dismiss();
-      toast.present();
-    }, err =>{
-      console.log(err);
-    })
-  }
+  //   //uploads img to firebase storage
+  //   this.firebaseService.uploadImage(image_src, randomId)
+  //   .then(photoURL => {
+  //     this.image = photoURL;
+  //     loading.dismiss();
+  //     toast.present();
+  //   }, err =>{
+  //     console.log(err);
+  //   })
+  // }
 
   async presentLoading(loading) {
     return await loading.present();

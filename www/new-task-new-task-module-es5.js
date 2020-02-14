@@ -146,7 +146,7 @@ var NewTaskPage = /** @class */ (function () {
                     maximumImagesCount: 1
                 }).then(function (results) {
                     for (var i = 0; i < results.length; i++) {
-                        _this.uploadImageToFirebase(results[i]);
+                        // this.uploadImageToFirebase(results[i]);
                     }
                 }, function (err) { return console.log(err); });
             }
@@ -154,40 +154,27 @@ var NewTaskPage = /** @class */ (function () {
             console.log(err);
         });
     };
-    NewTaskPage.prototype.uploadImageToFirebase = function (image) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var loading, toast, image_src, randomId;
-            var _this = this;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.loadingCtrl.create({
-                            message: 'Please wait...'
-                        })];
-                    case 1:
-                        loading = _a.sent();
-                        return [4 /*yield*/, this.toastCtrl.create({
-                                message: 'Image was updated successfully',
-                                duration: 3000
-                            })];
-                    case 2:
-                        toast = _a.sent();
-                        this.presentLoading(loading);
-                        image_src = this.webview.convertFileSrc(image);
-                        randomId = Math.random().toString(36).substr(2, 5);
-                        //uploads img to firebase storage
-                        this.firebaseService.uploadImage(image_src, randomId)
-                            .then(function (photoURL) {
-                            _this.image = photoURL;
-                            loading.dismiss();
-                            toast.present();
-                        }, function (err) {
-                            console.log(err);
-                        });
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
+    // async uploadImageToFirebase(image){
+    //   const loading = await this.loadingCtrl.create({
+    //     message: 'Please wait...'
+    //   });
+    //   const toast = await this.toastCtrl.create({
+    //     message: 'Image was updated successfully',
+    //     duration: 3000
+    //   });
+    //   this.presentLoading(loading);
+    //   let image_src = this.webview.convertFileSrc(image);
+    //   let randomId = Math.random().toString(36).substr(2, 5);
+    //   //uploads img to firebase storage
+    //   this.firebaseService.uploadImage(image_src, randomId)
+    //   .then(photoURL => {
+    //     this.image = photoURL;
+    //     loading.dismiss();
+    //     toast.present();
+    //   }, err =>{
+    //     console.log(err);
+    //   })
+    // }
     NewTaskPage.prototype.presentLoading = function (loading) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
