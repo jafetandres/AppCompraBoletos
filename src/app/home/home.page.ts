@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -17,9 +18,27 @@ export class HomePage implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
+<<<<<<< HEAD
    
+=======
+    private menu: MenuController
+>>>>>>> 9204c5bbeb4019c8e490bcc78c1963dca0485792
   ) { }
 
+
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
+
+  openEnd() {
+    this.menu.open('end');
+  }
+
+  openCustom() {
+    this.menu.enable(true, 'custom');
+    this.menu.open('custom');
+  }
   ngOnInit() {
     if (this.route && this.route.data) {
       this.getData();

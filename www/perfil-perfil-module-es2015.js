@@ -141,15 +141,6 @@ let PerfilPage = class PerfilPage {
     }
     onSubmit(value) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            // const loading = await this.loadingCtrl.create({
-            //   message: 'Please wait...'
-            // });
-            // const toast = await this.toastCtrl.create({
-            //   message: 'Image was updated successfully',
-            //   duration: 3000
-            // });
-            // this.presentLoading(loading);
-            // let image_src = this.webview.convertFileSrc(value.photoURL);
             let data = {
                 email: value.email,
                 displayName: value.displayName,

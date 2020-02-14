@@ -464,23 +464,23 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        loadChildren: () => Promise.all(/*! import() | login-login-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("login-login-module")]).then(__webpack_require__.bind(null, /*! ./login/login.module */ "./src/app/login/login.module.ts")).then(m => m.LoginPageModule)
+        loadChildren: () => Promise.all(/*! import() | login-login-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("login-login-module")]).then(__webpack_require__.bind(null, /*! ./login/login.module */ "./src/app/login/login.module.ts")).then(m => m.LoginPageModule)
     },
     {
         path: 'home',
-        loadChildren: () => Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(m => m.HomePageModule)
+        loadChildren: () => Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(m => m.HomePageModule)
     },
     {
         path: 'register',
-        loadChildren: () => Promise.all(/*! import() | register-register-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("register-register-module")]).then(__webpack_require__.bind(null, /*! ./register/register.module */ "./src/app/register/register.module.ts")).then(m => m.RegisterPageModule)
+        loadChildren: () => Promise.all(/*! import() | register-register-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("register-register-module")]).then(__webpack_require__.bind(null, /*! ./register/register.module */ "./src/app/register/register.module.ts")).then(m => m.RegisterPageModule)
     },
     {
         path: 'new-task',
-        loadChildren: () => Promise.all(/*! import() | new-task-new-task-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("new-task-new-task-module")]).then(__webpack_require__.bind(null, /*! ./new-task/new-task.module */ "./src/app/new-task/new-task.module.ts")).then(m => m.NewTaskPageModule)
+        loadChildren: () => Promise.all(/*! import() | new-task-new-task-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("new-task-new-task-module")]).then(__webpack_require__.bind(null, /*! ./new-task/new-task.module */ "./src/app/new-task/new-task.module.ts")).then(m => m.NewTaskPageModule)
     },
     {
         path: 'details/:id',
-        loadChildren: () => Promise.all(/*! import() | details-details-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("details-details-module")]).then(__webpack_require__.bind(null, /*! ./details/details.module */ "./src/app/details/details.module.ts")).then(m => m.DetailsPageModule)
+        loadChildren: () => Promise.all(/*! import() | details-details-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("details-details-module")]).then(__webpack_require__.bind(null, /*! ./details/details.module */ "./src/app/details/details.module.ts")).then(m => m.DetailsPageModule)
     },
     {
         path: 'location-select',
@@ -488,35 +488,63 @@ const routes = [
     },
     {
         path: 'ruta',
-        loadChildren: () => Promise.all(/*! import() | ruta-ruta-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("ruta-ruta-module")]).then(__webpack_require__.bind(null, /*! ./ruta/ruta.module */ "./src/app/ruta/ruta.module.ts")).then(m => m.RutaPageModule)
+        loadChildren: () => Promise.all(/*! import() | ruta-ruta-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("ruta-ruta-module")]).then(__webpack_require__.bind(null, /*! ./ruta/ruta.module */ "./src/app/ruta/ruta.module.ts")).then(m => m.RutaPageModule)
     },
     {
         path: 'nueva-ruta',
-        loadChildren: () => Promise.all(/*! import() | nueva-ruta-nueva-ruta-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("nueva-ruta-nueva-ruta-module")]).then(__webpack_require__.bind(null, /*! ./nueva-ruta/nueva-ruta.module */ "./src/app/nueva-ruta/nueva-ruta.module.ts")).then(m => m.NuevaRutaPageModule)
+        loadChildren: () => Promise.all(/*! import() | nueva-ruta-nueva-ruta-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("nueva-ruta-nueva-ruta-module")]).then(__webpack_require__.bind(null, /*! ./nueva-ruta/nueva-ruta.module */ "./src/app/nueva-ruta/nueva-ruta.module.ts")).then(m => m.NuevaRutaPageModule)
     },
     {
         path: 'provincia',
-        loadChildren: () => Promise.all(/*! import() | provincia-provincia-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("provincia-provincia-module")]).then(__webpack_require__.bind(null, /*! ./provincia/provincia.module */ "./src/app/provincia/provincia.module.ts")).then(m => m.ProvinciaPageModule)
+        loadChildren: () => Promise.all(/*! import() | provincia-provincia-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("provincia-provincia-module")]).then(__webpack_require__.bind(null, /*! ./provincia/provincia.module */ "./src/app/provincia/provincia.module.ts")).then(m => m.ProvinciaPageModule)
     },
     {
         path: 'pais',
-        loadChildren: () => Promise.all(/*! import() | pais-pais-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("pais-pais-module")]).then(__webpack_require__.bind(null, /*! ./pais/pais.module */ "./src/app/pais/pais.module.ts")).then(m => m.PaisPageModule)
+        loadChildren: () => Promise.all(/*! import() | pais-pais-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("pais-pais-module")]).then(__webpack_require__.bind(null, /*! ./pais/pais.module */ "./src/app/pais/pais.module.ts")).then(m => m.PaisPageModule)
     },
     {
         path: 'ciudad',
-        loadChildren: () => Promise.all(/*! import() | ciudad-ciudad-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("ciudad-ciudad-module")]).then(__webpack_require__.bind(null, /*! ./ciudad/ciudad.module */ "./src/app/ciudad/ciudad.module.ts")).then(m => m.CiudadPageModule)
+        loadChildren: () => Promise.all(/*! import() | ciudad-ciudad-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("ciudad-ciudad-module")]).then(__webpack_require__.bind(null, /*! ./ciudad/ciudad.module */ "./src/app/ciudad/ciudad.module.ts")).then(m => m.CiudadPageModule)
+    },
+    {
+        path: 'nueva-ciudad',
+        loadChildren: () => Promise.all(/*! import() | nueva-ciudad-nueva-ciudad-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("nueva-ciudad-nueva-ciudad-module")]).then(__webpack_require__.bind(null, /*! ./nueva-ciudad/nueva-ciudad.module */ "./src/app/nueva-ciudad/nueva-ciudad.module.ts")).then(m => m.NuevaCiudadPageModule)
     },
     {
         path: 'nuevo-pais',
-        loadChildren: () => Promise.all(/*! import() | nuevo-pais-nuevo-pais-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("nuevo-pais-nuevo-pais-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-pais/nuevo-pais.module */ "./src/app/nuevo-pais/nuevo-pais.module.ts")).then(m => m.NuevoPaisPageModule)
+        loadChildren: () => Promise.all(/*! import() | nuevo-pais-nuevo-pais-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("nuevo-pais-nuevo-pais-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-pais/nuevo-pais.module */ "./src/app/nuevo-pais/nuevo-pais.module.ts")).then(m => m.NuevoPaisPageModule)
+    },
+    {
+        path: 'vehiculo',
+        loadChildren: () => Promise.all(/*! import() | vehiculo-vehiculo-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("vehiculo-vehiculo-module")]).then(__webpack_require__.bind(null, /*! ./vehiculo/vehiculo.module */ "./src/app/vehiculo/vehiculo.module.ts")).then(m => m.VehiculoPageModule)
     },
     {
         path: 'nueva-provincia',
-        loadChildren: () => Promise.all(/*! import() | nueva-provincia-nueva-provincia-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("nueva-provincia-nueva-provincia-module")]).then(__webpack_require__.bind(null, /*! ./nueva-provincia/nueva-provincia.module */ "./src/app/nueva-provincia/nueva-provincia.module.ts")).then(m => m.NuevaProvinciaPageModule)
+        loadChildren: () => Promise.all(/*! import() | nueva-provincia-nueva-provincia-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("nueva-provincia-nueva-provincia-module")]).then(__webpack_require__.bind(null, /*! ./nueva-provincia/nueva-provincia.module */ "./src/app/nueva-provincia/nueva-provincia.module.ts")).then(m => m.NuevaProvinciaPageModule)
+    },
+    {
+        path: 'vehiculo',
+        loadChildren: () => Promise.all(/*! import() | vehiculo-vehiculo-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("vehiculo-vehiculo-module")]).then(__webpack_require__.bind(null, /*! ./vehiculo/vehiculo.module */ "./src/app/vehiculo/vehiculo.module.ts")).then(m => m.VehiculoPageModule)
+    },
+    {
+        path: 'boleto',
+        loadChildren: () => Promise.all(/*! import() | boleto-boleto-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("boleto-boleto-module")]).then(__webpack_require__.bind(null, /*! ./boleto/boleto.module */ "./src/app/boleto/boleto.module.ts")).then(m => m.BoletoPageModule)
     },
     {
         path: 'perfil',
-        loadChildren: () => Promise.all(/*! import() | perfil-perfil-module */[__webpack_require__.e("default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"), __webpack_require__.e("common"), __webpack_require__.e("perfil-perfil-module")]).then(__webpack_require__.bind(null, /*! ./perfil/perfil.module */ "./src/app/perfil/perfil.module.ts")).then(m => m.PerfilPageModule)
+        loadChildren: () => Promise.all(/*! import() | perfil-perfil-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("perfil-perfil-module")]).then(__webpack_require__.bind(null, /*! ./perfil/perfil.module */ "./src/app/perfil/perfil.module.ts")).then(m => m.PerfilPageModule)
+    },
+    {
+        path: 'actualizar-pais/:id',
+        loadChildren: () => Promise.all(/*! import() | actualizar-pais-actualizar-pais-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("actualizar-pais-actualizar-pais-module")]).then(__webpack_require__.bind(null, /*! ./actualizar-pais/actualizar-pais.module */ "./src/app/actualizar-pais/actualizar-pais.module.ts")).then(m => m.ActualizarPaisPageModule)
+    },
+    {
+        path: 'nuevo-boleto',
+        loadChildren: () => Promise.all(/*! import() | nuevo-boleto-nuevo-boleto-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("nuevo-boleto-nuevo-boleto-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-boleto/nuevo-boleto.module */ "./src/app/nuevo-boleto/nuevo-boleto.module.ts")).then(m => m.NuevoBoletoPageModule)
+    },
+    {
+        path: 'nuevo-vehiculo',
+        loadChildren: () => Promise.all(/*! import() | nuevo-vehiculo-nuevo-vehiculo-module */[__webpack_require__.e("default~actualizar-pais-actualizar-pais-module~boleto-boleto-module~ciudad-ciudad-module~details-det~b882170c"), __webpack_require__.e("common"), __webpack_require__.e("nuevo-vehiculo-nuevo-vehiculo-module")]).then(__webpack_require__.bind(null, /*! ./nuevo-vehiculo/nuevo-vehiculo.module */ "./src/app/nuevo-vehiculo/nuevo-vehiculo.module.ts")).then(m => m.NuevoVehiculoPageModule)
     }
     // {
     //   path: '',
@@ -951,7 +979,7 @@ GoogleMapsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jafetandresgalvezquezada/Dropbox/ProyectosIonic/AppCompraBoletos/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/saulariasduran/Desktop/UPS/DecimoCiclo/Seminario/AppCompraBoletos/src/main.ts */"./src/main.ts");
 
 
 /***/ })
