@@ -141,7 +141,7 @@ let NewTaskPage = class NewTaskPage {
                     maximumImagesCount: 1
                 }).then((results) => {
                     for (var i = 0; i < results.length; i++) {
-                        this.uploadImageToFirebase(results[i]);
+                        // this.uploadImageToFirebase(results[i]);
                     }
                 }, (err) => console.log(err));
             }
@@ -149,29 +149,27 @@ let NewTaskPage = class NewTaskPage {
             console.log(err);
         });
     }
-    uploadImageToFirebase(image) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            const loading = yield this.loadingCtrl.create({
-                message: 'Please wait...'
-            });
-            const toast = yield this.toastCtrl.create({
-                message: 'Image was updated successfully',
-                duration: 3000
-            });
-            this.presentLoading(loading);
-            let image_src = this.webview.convertFileSrc(image);
-            let randomId = Math.random().toString(36).substr(2, 5);
-            //uploads img to firebase storage
-            this.firebaseService.uploadImage(image_src, randomId)
-                .then(photoURL => {
-                this.image = photoURL;
-                loading.dismiss();
-                toast.present();
-            }, err => {
-                console.log(err);
-            });
-        });
-    }
+    // async uploadImageToFirebase(image){
+    //   const loading = await this.loadingCtrl.create({
+    //     message: 'Please wait...'
+    //   });
+    //   const toast = await this.toastCtrl.create({
+    //     message: 'Image was updated successfully',
+    //     duration: 3000
+    //   });
+    //   this.presentLoading(loading);
+    //   let image_src = this.webview.convertFileSrc(image);
+    //   let randomId = Math.random().toString(36).substr(2, 5);
+    //   //uploads img to firebase storage
+    //   this.firebaseService.uploadImage(image_src, randomId)
+    //   .then(photoURL => {
+    //     this.image = photoURL;
+    //     loading.dismiss();
+    //     toast.present();
+    //   }, err =>{
+    //     console.log(err);
+    //   })
+    // }
     presentLoading(loading) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             return yield loading.present();

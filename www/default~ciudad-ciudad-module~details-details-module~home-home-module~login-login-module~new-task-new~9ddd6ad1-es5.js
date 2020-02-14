@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~details-details-module~home-home-module~login-login-module~new-task-new-task-module~register~8a33c1ce"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"],{
 
 /***/ "./node_modules/@firebase/storage/dist/index.esm.js":
 /*!**********************************************************!*\
@@ -3618,6 +3618,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var firebase_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! firebase/storage */ "./node_modules/firebase/storage/dist/index.esm.js");
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
+/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
+
 
 
 
@@ -3625,9 +3627,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var FirebaseService = /** @class */ (function () {
-    function FirebaseService(afs, afAuth) {
+    function FirebaseService(afs, afAuth, db) {
         this.afs = afs;
         this.afAuth = afAuth;
+        this.db = db;
     }
     FirebaseService.prototype.getTasks = function () {
         var _this = this;
@@ -3640,13 +3643,44 @@ var FirebaseService = /** @class */ (function () {
             });
         });
     };
-    FirebaseService.prototype.getTask = function (taskId) {
+    FirebaseService.prototype.getRutas = function () {
         var _this = this;
-        console.log("entro a los servicios firebase");
         return new Promise(function (resolve, reject) {
             _this.afAuth.user.subscribe(function (currentUser) {
                 if (currentUser) {
-                    console.log("id" + currentUser.uid);
+                    _this.snapshotChangesSubscription = _this.afs.collection('people').doc(currentUser.uid).collection('ruta').snapshotChanges();
+                    resolve(_this.snapshotChangesSubscription);
+                }
+            });
+        });
+    };
+    FirebaseService.prototype.getPaises = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.afAuth.user.subscribe(function (currentUser) {
+                if (currentUser) {
+                    _this.snapshotChangesSubscription = _this.afs.collection('pais').snapshotChanges();
+                    resolve(_this.snapshotChangesSubscription);
+                }
+            });
+        });
+    };
+    FirebaseService.prototype.getProvincias = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.afAuth.user.subscribe(function (currentUser) {
+                if (currentUser) {
+                    _this.snapshotChangesSubscription = _this.afs.collection('provincia').snapshotChanges();
+                    resolve(_this.snapshotChangesSubscription);
+                }
+            });
+        });
+    };
+    FirebaseService.prototype.getTask = function (taskId) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.afAuth.user.subscribe(function (currentUser) {
+                if (currentUser) {
                     _this.snapshotChangesSubscription = _this.afs.doc('people/' + currentUser.uid + '/tasks/' + taskId).valueChanges()
                         .subscribe(function (snapshots) {
                         resolve(snapshots);
@@ -3657,6 +3691,37 @@ var FirebaseService = /** @class */ (function () {
             });
         });
     };
+    FirebaseService.prototype.getPerfil = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.afAuth.user.subscribe(function (currentUser) {
+                // if(currentUser){
+                //   this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/tasks/' ).valueChanges()
+                //   .subscribe(snapshots => {
+                resolve(currentUser);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    // var user = firebase.auth().currentUser;
+    // this.afAuth.authState.subscribe(data => {
+    // console.log('A informacao de data ' + data.email);
+    // return data;
+    // });
+    //     }
+    // if (user != null) {
+    //    user.providerData.subscribe(
+    //      data=>{
+    //      },err =>{
+    //      })
+    //{
+    //   console.log("Sign-in provider: " + profile.providerId);
+    //   console.log("  Provider-specific UID: " + profile.uid);
+    //   console.log("  Name: " + profile.displayName);
+    //   console.log("  Email: " + profile.email);
+    //   console.log("  Photo URL: " + profile.photoURL);
+    // }
     FirebaseService.prototype.unsubscribeOnLogOut = function () {
         var disposeMe = this.snapshotChangesSubscription.subscribe();
         //remember to unsubscribe from the snapshotChanges
@@ -3668,6 +3733,20 @@ var FirebaseService = /** @class */ (function () {
             var currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
             _this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).set(value)
                 .then(function (res) { return resolve(res); }, function (err) { return reject(err); });
+        });
+    };
+    FirebaseService.prototype.actualizarPerfil = function (imageURI, value) {
+        var user = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
+        console.log("ruta esta1: " + value.photoURL);
+        console.log("ruta esta2: " + imageURI);
+        return new Promise(function (resolve, reject) {
+            var currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
+            currentUser.updateProfile({
+                photoURL: value.photoURL,
+                displayName: value.displayName
+            }).then(function (res) { return resolve(res); }, function (err) { return reject(err); }
+            // An error happened.
+            );
         });
     };
     FirebaseService.prototype.deleteTask = function (taskKey) {
@@ -3690,6 +3769,41 @@ var FirebaseService = /** @class */ (function () {
                 .then(function (res) { return resolve(res); }, function (err) { return reject(err); });
         });
     };
+    FirebaseService.prototype.crearRuta = function (value) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
+            _this.afs.collection('bd').doc(currentUser.uid).collection('ruta').add({
+                descripcion: value.descripcion,
+                precio: value.precio
+            })
+                .then(function (res) { return resolve(res); }, function (err) { return reject(err); });
+        });
+    };
+    FirebaseService.prototype.crearPais = function (value) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
+            _this.afs.collection('pais').add({
+                descripcion: value.descripcion,
+            })
+                // this.afs.collection('people').doc(currentUser.uid).collection('pais').add({
+                //   descripcion: value.descripcion,
+                // })
+                .then(function (res) { return resolve(res); }, function (err) { return reject(err); });
+        });
+    };
+    FirebaseService.prototype.crearProvincia = function (value) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
+            _this.afs.collection('provincia').add({
+                pais: value.pais,
+                descripcion: value.descripcion,
+            })
+                .then(function (res) { return resolve(res); }, function (err) { return reject(err); });
+        });
+    };
     FirebaseService.prototype.encodeImageUri = function (imageUri, callback) {
         var c = document.createElement('canvas');
         var ctx = c.getContext("2d");
@@ -3705,11 +3819,12 @@ var FirebaseService = /** @class */ (function () {
         img.src = imageUri;
     };
     ;
-    FirebaseService.prototype.uploadImage = function (imageURI, randomId) {
+    FirebaseService.prototype.uploadImage = function (imageURI) {
         var _this = this;
         return new Promise(function (resolve, reject) {
+            var currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
             var storageRef = firebase_app__WEBPACK_IMPORTED_MODULE_3__["storage"]().ref();
-            var imageRef = storageRef.child('image').child(randomId);
+            var imageRef = storageRef.child('image').child(currentUser.uid);
             _this.encodeImageUri(imageURI, function (image64) {
                 imageRef.putString(image64, 'data_url')
                     .then(function (snapshot) {
@@ -3723,14 +3838,16 @@ var FirebaseService = /** @class */ (function () {
     };
     FirebaseService.ctorParameters = function () { return [
         { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] },
-        { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"] }
+        { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"] },
+        { type: _angular_fire_database__WEBPACK_IMPORTED_MODULE_6__["AngularFireDatabase"] }
     ]; };
     FirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"],
-            _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"]])
+            _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"],
+            _angular_fire_database__WEBPACK_IMPORTED_MODULE_6__["AngularFireDatabase"]])
     ], FirebaseService);
     return FirebaseService;
 }());
@@ -3740,4 +3857,4 @@ var FirebaseService = /** @class */ (function () {
 /***/ })
 
 }]);
-//# sourceMappingURL=default~details-details-module~home-home-module~login-login-module~new-task-new-task-module~register~8a33c1ce-es5.js.map
+//# sourceMappingURL=default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1-es5.js.map

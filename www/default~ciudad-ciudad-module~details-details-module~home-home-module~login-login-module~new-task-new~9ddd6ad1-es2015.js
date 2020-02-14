@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~details-details-module~home-home-module~login-login-module~new-task-new-task-module~register~8a33c1ce"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1"],{
 
 /***/ "./node_modules/@firebase/storage/dist/index.esm.js":
 /*!**********************************************************!*\
@@ -3618,6 +3618,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var firebase_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! firebase/storage */ "./node_modules/firebase/storage/dist/index.esm.js");
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
+/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/es2015/index.js");
+
 
 
 
@@ -3625,9 +3627,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let FirebaseService = class FirebaseService {
-    constructor(afs, afAuth) {
+    constructor(afs, afAuth, db) {
         this.afs = afs;
         this.afAuth = afAuth;
+        this.db = db;
     }
     getTasks() {
         return new Promise((resolve, reject) => {
@@ -3639,12 +3642,40 @@ let FirebaseService = class FirebaseService {
             });
         });
     }
-    getTask(taskId) {
-        console.log("entro a los servicios firebase");
+    getRutas() {
         return new Promise((resolve, reject) => {
             this.afAuth.user.subscribe(currentUser => {
                 if (currentUser) {
-                    console.log("id" + currentUser.uid);
+                    this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('ruta').snapshotChanges();
+                    resolve(this.snapshotChangesSubscription);
+                }
+            });
+        });
+    }
+    getPaises() {
+        return new Promise((resolve, reject) => {
+            this.afAuth.user.subscribe(currentUser => {
+                if (currentUser) {
+                    this.snapshotChangesSubscription = this.afs.collection('pais').snapshotChanges();
+                    resolve(this.snapshotChangesSubscription);
+                }
+            });
+        });
+    }
+    getProvincias() {
+        return new Promise((resolve, reject) => {
+            this.afAuth.user.subscribe(currentUser => {
+                if (currentUser) {
+                    this.snapshotChangesSubscription = this.afs.collection('provincia').snapshotChanges();
+                    resolve(this.snapshotChangesSubscription);
+                }
+            });
+        });
+    }
+    getTask(taskId) {
+        return new Promise((resolve, reject) => {
+            this.afAuth.user.subscribe(currentUser => {
+                if (currentUser) {
                     this.snapshotChangesSubscription = this.afs.doc('people/' + currentUser.uid + '/tasks/' + taskId).valueChanges()
                         .subscribe(snapshots => {
                         resolve(snapshots);
@@ -3655,6 +3686,36 @@ let FirebaseService = class FirebaseService {
             });
         });
     }
+    getPerfil() {
+        return new Promise((resolve, reject) => {
+            this.afAuth.user.subscribe(currentUser => {
+                // if(currentUser){
+                //   this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/tasks/' ).valueChanges()
+                //   .subscribe(snapshots => {
+                resolve(currentUser);
+            }, err => {
+                reject(err);
+            });
+        });
+    }
+    // var user = firebase.auth().currentUser;
+    // this.afAuth.authState.subscribe(data => {
+    // console.log('A informacao de data ' + data.email);
+    // return data;
+    // });
+    //     }
+    // if (user != null) {
+    //    user.providerData.subscribe(
+    //      data=>{
+    //      },err =>{
+    //      })
+    //{
+    //   console.log("Sign-in provider: " + profile.providerId);
+    //   console.log("  Provider-specific UID: " + profile.uid);
+    //   console.log("  Name: " + profile.displayName);
+    //   console.log("  Email: " + profile.email);
+    //   console.log("  Photo URL: " + profile.photoURL);
+    // }
     unsubscribeOnLogOut() {
         let disposeMe = this.snapshotChangesSubscription.subscribe();
         //remember to unsubscribe from the snapshotChanges
@@ -3665,6 +3726,20 @@ let FirebaseService = class FirebaseService {
             let currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
             this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).set(value)
                 .then(res => resolve(res), err => reject(err));
+        });
+    }
+    actualizarPerfil(imageURI, value) {
+        var user = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
+        console.log("ruta esta1: " + value.photoURL);
+        console.log("ruta esta2: " + imageURI);
+        return new Promise((resolve, reject) => {
+            let currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
+            currentUser.updateProfile({
+                photoURL: value.photoURL,
+                displayName: value.displayName
+            }).then(res => resolve(res), err => reject(err)
+            // An error happened.
+            );
         });
     }
     deleteTask(taskKey) {
@@ -3685,6 +3760,38 @@ let FirebaseService = class FirebaseService {
                 .then(res => resolve(res), err => reject(err));
         });
     }
+    crearRuta(value) {
+        return new Promise((resolve, reject) => {
+            let currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
+            this.afs.collection('bd').doc(currentUser.uid).collection('ruta').add({
+                descripcion: value.descripcion,
+                precio: value.precio
+            })
+                .then(res => resolve(res), err => reject(err));
+        });
+    }
+    crearPais(value) {
+        return new Promise((resolve, reject) => {
+            let currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
+            this.afs.collection('pais').add({
+                descripcion: value.descripcion,
+            })
+                // this.afs.collection('people').doc(currentUser.uid).collection('pais').add({
+                //   descripcion: value.descripcion,
+                // })
+                .then(res => resolve(res), err => reject(err));
+        });
+    }
+    crearProvincia(value) {
+        return new Promise((resolve, reject) => {
+            let currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
+            this.afs.collection('provincia').add({
+                pais: value.pais,
+                descripcion: value.descripcion,
+            })
+                .then(res => resolve(res), err => reject(err));
+        });
+    }
     encodeImageUri(imageUri, callback) {
         var c = document.createElement('canvas');
         var ctx = c.getContext("2d");
@@ -3700,10 +3807,11 @@ let FirebaseService = class FirebaseService {
         img.src = imageUri;
     }
     ;
-    uploadImage(imageURI, randomId) {
+    uploadImage(imageURI) {
         return new Promise((resolve, reject) => {
+            let currentUser = firebase_app__WEBPACK_IMPORTED_MODULE_3__["auth"]().currentUser;
             let storageRef = firebase_app__WEBPACK_IMPORTED_MODULE_3__["storage"]().ref();
-            let imageRef = storageRef.child('image').child(randomId);
+            let imageRef = storageRef.child('image').child(currentUser.uid);
             this.encodeImageUri(imageURI, function (image64) {
                 imageRef.putString(image64, 'data_url')
                     .then(snapshot => {
@@ -3718,14 +3826,16 @@ let FirebaseService = class FirebaseService {
 };
 FirebaseService.ctorParameters = () => [
     { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] },
-    { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"] }
+    { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"] },
+    { type: _angular_fire_database__WEBPACK_IMPORTED_MODULE_6__["AngularFireDatabase"] }
 ];
 FirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"],
-        _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"]])
+        _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"],
+        _angular_fire_database__WEBPACK_IMPORTED_MODULE_6__["AngularFireDatabase"]])
 ], FirebaseService);
 
 
@@ -3733,4 +3843,4 @@ FirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /***/ })
 
 }]);
-//# sourceMappingURL=default~details-details-module~home-home-module~login-login-module~new-task-new-task-module~register~8a33c1ce-es2015.js.map
+//# sourceMappingURL=default~ciudad-ciudad-module~details-details-module~home-home-module~login-login-module~new-task-new~9ddd6ad1-es2015.js.map

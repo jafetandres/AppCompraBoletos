@@ -52,6 +52,14 @@ const routes: Routes = [
   {
     path: 'nueva-provincia',
     loadChildren: () => import('./nueva-provincia/nueva-provincia.module').then( m => m.NuevaProvinciaPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'actualizar-pais/:id',
+    loadChildren: () => import('./actualizar-pais/actualizar-pais.module').then( m => m.ActualizarPaisPageModule)
   }
   // {
   //   path: '',

@@ -136,12 +136,12 @@ var LoginPage = /** @class */ (function () {
         this.errorMessage = '';
         this.validation_messages = {
             'email': [
-                { type: 'required', message: 'Email is required.' },
-                { type: 'pattern', message: 'Please enter a valid email.' }
+                { type: 'required', message: 'Correo es requerido.' },
+                { type: 'pattern', message: 'Por favor ingrese un correo valido.' }
             ],
             'password': [
-                { type: 'required', message: 'Password is required.' },
-                { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+                { type: 'required', message: 'Contraseña es requerido.' },
+                { type: 'minlength', message: 'Contraseña debe ser mayor a 5 caracteres.' }
             ]
         };
     }

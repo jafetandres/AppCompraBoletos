@@ -69,11 +69,10 @@ export class FirebaseService {
   }
 
   getTask(taskId){
-    console.log("entro a los servicios firebase");
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          console.log("id"+currentUser.uid);
+          
           this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/tasks/' + taskId).valueChanges()
           .subscribe(snapshots => {
             resolve(snapshots);
@@ -84,6 +83,72 @@ export class FirebaseService {
       })
     });
   }
+
+  getPais(id){
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if(currentUser){
+          
+          this.snapshotChangesSubscription = this.afs.doc<any>('pais/'+ id).valueChanges()
+          .subscribe(snapshots => {
+            resolve(snapshots);
+          }, err => {
+            reject(err)
+          })
+        }
+      })
+    });
+  }
+  getPerfil(){
+
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+ 
+        // if(currentUser){
+          
+        //   this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/tasks/' ).valueChanges()
+        //   .subscribe(snapshots => {
+            resolve(currentUser);
+          }, err => {
+            reject(err)
+          })
+        });
+     
+   
+  }
+
+
+    // var user = firebase.auth().currentUser;
+
+    
+      // this.afAuth.authState.subscribe(data => {
+
+        // console.log('A informacao de data ' + data.email);
+        // return data;
+      // });
+//     }
+
+// if (user != null) {
+
+
+//    user.providerData.subscribe(
+//      data=>{
+
+//      },err =>{
+
+//      })
+   
+  //{
+
+  //   console.log("Sign-in provider: " + profile.providerId);
+  //   console.log("  Provider-specific UID: " + profile.uid);
+  //   console.log("  Name: " + profile.displayName);
+  //   console.log("  Email: " + profile.email);
+  //   console.log("  Photo URL: " + profile.photoURL);
+  // }
+  
+
+  
 
   unsubscribeOnLogOut(){
     let disposeMe = this.snapshotChangesSubscription.subscribe();
@@ -102,10 +167,55 @@ export class FirebaseService {
     })
   }
 
+
+  actualizarPais(id, value){
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('pais').doc(id).set(value)
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+    })
+  }
+  actualizarPerfil(imageURI,value){
+
+    var user = firebase.auth().currentUser;
+    console.log("ruta esta1: "+value.photoURL);
+    console.log("ruta esta2: "+imageURI);
+    return new Promise<any>((resolve, reject) => {
+     
+      let currentUser = firebase.auth().currentUser;
+  
+      currentUser.updateProfile({
+        
+        photoURL: value.photoURL,
+        displayName: value.displayName
+
+
+      }).then(
+        res=> resolve(res),
+        err=> reject(err)
+      
+        // An error happened.
+      )});
+     
+  }
+
   deleteTask(taskKey){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
       this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).delete()
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+    })
+  }
+  eliminarPais(taskKey){
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('pais').doc(taskKey).delete()
       .then(
         res => resolve(res),
         err => reject(err)
@@ -184,12 +294,14 @@ export class FirebaseService {
       callback(dataURL);
     };
     img.src = imageUri;
+   
   };
 
-  uploadImage(imageURI, randomId){
+  uploadImage(imageURI){
     return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
       let storageRef = firebase.storage().ref();
-      let imageRef = storageRef.child('image').child(randomId);
+      let imageRef = storageRef.child('image').child(currentUser.uid);
       this.encodeImageUri(imageURI, function(image64){
         imageRef.putString(image64, 'data_url')
         .then(snapshot => {
