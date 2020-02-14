@@ -17,6 +17,7 @@
             <ion-list>
                 <ion-item *ngFor="let item of items">
                     <ion-label>{{item.payload.doc.data().descripcion}}</ion-label>
+                    <ion-label>{{item.payload.doc.data()}}</ion-label>
                 </ion-item>
             </ion-list>
         </div>

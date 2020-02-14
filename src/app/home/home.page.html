@@ -1,15 +1,15 @@
 <ion-header>
     <ion-toolbar color="primary">
-      <ion-buttons slot="end">
-        <ion-button [routerLink]="['/new-task']">
-          <ion-icon slot="icon-only" name="add"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-title>Compra Boletos</ion-title>
+        <ion-buttons slot="end">
+            <ion-button [routerLink]="['/new-task']">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Compra Boletos</ion-title>
     </ion-toolbar>
-  </ion-header>
-  
-  <!-- <ion-content *ngIf="items" class="list-mini-content" padding>
+</ion-header>
+
+<!-- <ion-content *ngIf="items" class="list-mini-content" padding>
      <ion-button [routerLink]="['/location-select']">Ir a GPS</ion-button> 
 
     <div *ngIf="items.length > 0" class="list-mini">
@@ -27,27 +27,31 @@
       Please create your first task.
     </div>
   </ion-content> -->
-  <ion-content>
-  <ion-list>
-      <ion-item [routerLink]="['/pais']">   
-        <ion-label>Pais</ion-label>
-      </ion-item>
-      <ion-item [routerLink]="['/provincia']">   
-        <ion-label>Provincia</ion-label>
-      </ion-item>
-      <ion-item [routerLink]="['/ciudad']">   
-        <ion-label>Ciudad</ion-label>
-      </ion-item>
+<ion-content>
+    <ion-list>
+        <ion-item [routerLink]="['/pais']">
+            <ion-label>Pais</ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/provincia']">
+            <ion-label>Provincia</ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/ciudad']">
+            <ion-label>Ciudad</ion-label>
+        </ion-item>
 
-    <ion-item [routerLink]="['/ruta']">   
-      <ion-label>Rutas</ion-label>
-    </ion-item>
-  
-  </ion-list>
+        <ion-item [routerLink]="['/ruta']">
+            <ion-label>Rutas</ion-label>
+        </ion-item>
+
+        <ion-item [routerLink]="['/vehiculo']">
+            <ion-label>Vehiculo</ion-label>
+        </ion-item>
+
+    </ion-list>
 </ion-content>
 
-  <ion-footer (click)="logout()">
+<ion-footer (click)="logout()">
     <ion-toolbar color="medium">
-      <ion-title>Cerrar Sesion</ion-title>
+        <ion-title>Cerrar Sesion</ion-title>
     </ion-toolbar>
-  </ion-footer>
+</ion-footer>

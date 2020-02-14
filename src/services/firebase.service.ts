@@ -64,21 +64,29 @@ export class FirebaseService {
           this.snapshotChangesSubscription = this.afs.collection('provincia').snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
-      })
-    })
+      });
+    });
   }
   getCiudades() {
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
-      
         if(currentUser){
           this.snapshotChangesSubscription = this.afs.collection('ciudad').snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
-      })
-    })
+      });
+    });
   }
-
+  getVehiculos() {
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if (currentUser) {
+          this.snapshotChangesSubscription = this.afs.collection('vehiculo').snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      });
+    });
+  }
   getTask(taskId){
     console.log("entro a los servicios firebase");
     return new Promise<any>((resolve, reject) => {
@@ -122,6 +130,16 @@ export class FirebaseService {
         err => reject(err)
       )
     })
+  }
+  deleteVehicle(Key) {
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('vehiculo').doc(Key).delete()
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
   }
 
   createTask(value){
@@ -187,8 +205,25 @@ export class FirebaseService {
     return new Promise<any>((resolve, reject) => {
       const currentUser = firebase.auth().currentUser;
       this.afs.collection('ciudad').add({
-        //provincia: value.provincia,
+        provincia: value.provincia,
         descripcion: value.descripcion,
+
+      })
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
+  }
+  crearVehiculo(value) {
+    return new Promise<any>((resolve, reject) => {
+      const currentUser = firebase.auth().currentUser;
+      this.afs.collection('vehiculo').add({
+        placa: value.placa,
+        modelo: value.modelo,
+        marca: value.marca,
+        color: value.color,
+        numero_asiento: value.numero_asiento,
 
       })
       .then(

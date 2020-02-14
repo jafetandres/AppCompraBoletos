@@ -56,7 +56,15 @@ const routes: Routes = [
   {
     path: 'nueva-provincia',
     loadChildren: () => import('./nueva-provincia/nueva-provincia.module').then( m => m.NuevaProvinciaPageModule)
+  },  {
+    path: 'vehiculo',
+    loadChildren: () => import('./vehiculo/vehiculo.module').then( m => m.VehiculoPageModule)
+  },
+  {
+    path: 'nuevo-vehiculo',
+    loadChildren: () => import('./nuevo-vehiculo/nuevo-vehiculo.module').then( m => m.NuevoVehiculoPageModule)
   }
+
 
   // {
   //   path: '',

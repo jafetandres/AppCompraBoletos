@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/pais"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Nuevo Vehiculo</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+
+        <ion-item>
+            <ion-label position="floating" color="primary">Placa</ion-label>
+            <ion-input type="text" formControlName="placa"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating" color="primary">Modelo</ion-label>
+            <ion-input type="text" formControlName="modelo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating" color="primary">Marca</ion-label>
+            <ion-input type="text" formControlName="marca"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating" color="primary">Color</ion-label>
+            <ion-input type="text" formControlName="color"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating" color="primary">Num. Asientos</ion-label>
+            <ion-input type="number" formControlName="numero_asiento"></ion-input>
+        </ion-item>
+        <ion-button class="submit-btn" expand="block" type="submit">Crear</ion-button>
+    </form>
+
+</ion-content>
