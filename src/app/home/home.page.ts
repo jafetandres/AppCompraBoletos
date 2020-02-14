@@ -18,11 +18,8 @@ export class HomePage implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-<<<<<<< HEAD
    
-=======
     private menu: MenuController
->>>>>>> 9204c5bbeb4019c8e490bcc78c1963dca0485792
   ) { }
 
 

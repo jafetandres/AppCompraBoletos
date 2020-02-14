@@ -11,6 +11,6 @@ export class NuevaProvinciaResolver implements Resolve<any> {
   }
   resolve() {
     
-    return this.firebaseService.getProvincias();
+    return this.firebaseService.getPaises();
   }
 }
