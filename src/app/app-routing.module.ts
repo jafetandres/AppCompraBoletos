@@ -56,7 +56,8 @@ const routes: Routes = [
   {
     path: 'nueva-provincia',
     loadChildren: () => import('./nueva-provincia/nueva-provincia.module').then( m => m.NuevaProvinciaPageModule)
-  },  {
+  },
+  {
     path: 'vehiculo',
     loadChildren: () => import('./vehiculo/vehiculo.module').then( m => m.VehiculoPageModule)
   },
@@ -64,6 +65,16 @@ const routes: Routes = [
     path: 'nuevo-vehiculo',
     loadChildren: () => import('./nuevo-vehiculo/nuevo-vehiculo.module').then( m => m.NuevoVehiculoPageModule)
   }
+  ,
+  {
+    path: 'nuevo-vehiculo',
+    loadChildren: () => import('./nuevo-vehiculo/nuevo-vehiculo.module').then( m => m.NuevoVehiculoPageModule)
+  },
+  {
+    path: 'actualizar-vehiculo/:id',
+    loadChildren: () => import('./actualizar-vehiculo/actualizar-vehiculo.module').then( m => m.ActualizarVehiculoPageModule)
+  }
+
 
 
   // {

@@ -27,13 +27,13 @@
                     </ion-item>
 
                     <ion-item-options side="start">
-                        <ion-item-option color="secondary" (click)="actualizar(item)">
+                        <ion-item-option color="secondary" (click)="actualizar(item.payload.doc.id)">
                             <ion-icon slot="icon-only" name="md-create"></ion-icon>
                         </ion-item-option>
                     </ion-item-options>
 
                     <ion-item-options side="end">
-                        <ion-item-option color="danger" (click)="eiminar(item.payload.doc.data())">
+                        <ion-item-option color="danger" (click)="eiminar(item.payload.doc.id)">
                             <ion-icon slot="icon-only" name="trash"></ion-icon>
                         </ion-item-option>
                     </ion-item-options>

@@ -88,12 +88,24 @@ export class FirebaseService {
     });
   }
   getTask(taskId){
-    console.log("entro a los servicios firebase");
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          console.log("id"+currentUser.uid);
           this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/tasks/' + taskId).valueChanges()
+          .subscribe(snapshots => {
+            resolve(snapshots);
+          }, err => {
+            reject(err)
+          })
+        }
+      })
+    });
+  }
+  getVehiculo(id){
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.doc<any>('vehiculo/' + id).valueChanges()
           .subscribe(snapshots => {
             resolve(snapshots);
           }, err => {
@@ -114,6 +126,17 @@ export class FirebaseService {
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
       this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).set(value)
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+    })
+  }
+
+  actualizarVehiculo(key, value){
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('vehiculo').doc(key).set(value)
       .then(
         res => resolve(res),
         err => reject(err)
