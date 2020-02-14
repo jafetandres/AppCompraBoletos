@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { NuevaCiudadPageRoutingModule } from './nueva-ciudad-routing.module';
-
-import { NuevaCiudadPage } from './nueva-ciudad.page';
-import { NuevaCiudadResolver } from './nueva-ciudad.resoler';
 import { Routes, RouterModule } from '@angular/router';
+
+import { NuevoVehiculoPage } from './nuevo-vehiculo.page';
+import { NuevoVehiculoResolver } from './nuevo-vehiculo.resolver';
+
 const routes: Routes = [
   {
     path: '',
-    component: NuevaCiudadPage,
+    component: NuevoVehiculoPage,
     resolve: {
-      data: NuevaCiudadResolver
+      data: NuevoVehiculoResolver
     }
   }
 ];
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,9 +25,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [NuevaCiudadPage],
+  declarations: [NuevoVehiculoPage],
   providers: [
-    NuevaCiudadResolver
+    NuevoVehiculoResolver
   ]
 })
-export class NuevaCiudadPageModule {}
+export class NuevoVehiculoPageModule {}

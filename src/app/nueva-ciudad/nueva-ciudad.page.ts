@@ -19,6 +19,8 @@ export class NuevaCiudadPage implements OnInit {
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
     public router: Router,
+    private authService: AuthService,
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
     private webview: WebView
@@ -26,10 +28,23 @@ export class NuevaCiudadPage implements OnInit {
 
     ngOnInit() {
       this.resetFields();
+      if (this.route && this.route.data) {
+        this.getData();
+      }
     }
+    
+  logout() {
+    this.authService.doLogout()
+    .then(res => {
+      this.router.navigate([""]);
+    }, err => {
+      console.log(err);
+    })
+  }
     resetFields(){
   
       this.validations_form = this.formBuilder.group({
+        provincia: new FormControl('', Validators.required),
         descripcion: new FormControl('', Validators.required),
   
       });
@@ -37,6 +52,7 @@ export class NuevaCiudadPage implements OnInit {
   
     onSubmit(value){
       let data = {
+        provincia: value.provincia,
         descripcion: value.descripcion,
        
        
@@ -47,5 +63,22 @@ export class NuevaCiudadPage implements OnInit {
           this.router.navigate(["/home"]);
         }
       )
+    }
+    async getData() {
+      const loading = await this.loadingCtrl.create({
+        message: 'Cargando'
+      });
+      this.presentLoading(loading);
+      this.route.data.subscribe(routeData => {
+        routeData['data'].subscribe(data => {
+          loading.dismiss();
+          this.items = data;
+          console.log(this.items.length);
+        });
+      });
+    }
+  
+    async presentLoading(loading) {
+      return await loading.present();
     }
 }
