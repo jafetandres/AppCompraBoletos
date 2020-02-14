@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FirebaseService } from 'src/services/firebase.service';
-import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { AuthService } from '../../services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FirebaseService } from '../../services/firebase.service';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+
 @Component({
-  selector: 'app-nueva-ruta',
-  templateUrl: './nueva-ruta.page.html',
-  styleUrls: ['./nueva-ruta.page.scss'],
+  selector: 'app-nuevo-boleto',
+  templateUrl: './nuevo-boleto.page.html',
+  styleUrls: ['./nuevo-boleto.page.scss'],
 })
-export class NuevaRutaPage implements OnInit {
+export class NuevoBoletoPage implements OnInit {
   items: Array<any>;
 
   validations_form: FormGroup;
@@ -66,20 +67,20 @@ export class NuevaRutaPage implements OnInit {
   resetFields(){
 
     this.validations_form = this.formBuilder.group({
-      descripcion: new FormControl('', Validators.required),
-      precio: new FormControl('', Validators.required),
-      origen: new FormControl('',Validators.required),
-      destino: new FormControl('',Validators.required)
+      fecha: new FormControl('', Validators.required),
+      estado: new FormControl('', Validators.required),
+      valor: new FormControl('',Validators.required),
+      vehiculo: new FormControl('',Validators.required)
     });
   }
 
 
   onSubmit(value){
     let data = {
-      descripcion: value.descripcion,
-      precio: value.precio,
-      origen: value.origen,
-      destino: value.destino
+      fecha: value.descripcion,
+      estado: value.precio,
+      valor: value.origen,
+      vehiculo: value.destino
      
     }
     this.firebaseService.crearRuta(data)
@@ -91,3 +92,4 @@ export class NuevaRutaPage implements OnInit {
   }
 
 }
+

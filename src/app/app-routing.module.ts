@@ -56,6 +56,14 @@ const routes: Routes = [
   {
     path: 'nueva-provincia',
     loadChildren: () => import('./nueva-provincia/nueva-provincia.module').then( m => m.NuevaProvinciaPageModule)
+  },
+  {
+    path: 'boleto',
+    loadChildren: () => import('./boleto/boleto.module').then( m => m.BoletoPageModule)
+  },
+  {
+    path: 'nuevo-boleto',
+    loadChildren: () => import('./nuevo-boleto/nuevo-boleto.module').then( m => m.NuevoBoletoPageModule)
   }
 
   // {

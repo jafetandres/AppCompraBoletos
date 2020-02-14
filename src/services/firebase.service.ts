@@ -79,6 +79,18 @@ export class FirebaseService {
     })
   }
 
+  getBoletos() {
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+      
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.collection('boleto').snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      })
+    })
+  }
+
   getTask(taskId){
     console.log("entro a los servicios firebase");
     return new Promise<any>((resolve, reject) => {
@@ -189,6 +201,24 @@ export class FirebaseService {
       this.afs.collection('ciudad').add({
         //provincia: value.provincia,
         descripcion: value.descripcion,
+
+      })
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
+  }
+
+  crearBoleto(value) {
+    return new Promise<any>((resolve, reject) => {
+      const currentUser = firebase.auth().currentUser;
+      this.afs.collection('boleto').add({
+        fecha: value.fecha,
+        estado: value.estado,
+        descripcion: value.descripcion,
+        valor: value.valor,
+        vehiculo:value.vehiculo
 
       })
       .then(
