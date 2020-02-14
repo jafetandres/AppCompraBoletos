@@ -12,6 +12,7 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 })
 export class NuevoVehiculoPage implements OnInit {
   items: Array<any>;
+  item: any;
   validations_form: FormGroup;
   constructor(
     public toastCtrl: ToastController,
@@ -41,7 +42,7 @@ export class NuevoVehiculoPage implements OnInit {
     this.firebaseService.crearVehiculo(data)
     .then(
       res => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/vehiculo']);
       }
     )
   }
@@ -56,21 +57,37 @@ export class NuevoVehiculoPage implements OnInit {
       numero_asiento: new FormControl('', Validators.required),
     });
   }
-  async getData() {
-    const loading = await this.loadingCtrl.create({
-      message: 'Cargando'
-    });
-    this.presentLoading(loading);
-    this.route.data.subscribe(routeData => {
-      routeData['data'].subscribe(data => {
-        loading.dismiss();
-        this.items = data;
-        console.log(this.items.length);
-      });
-    });
-  }
+  // async getData() {
+  //   const loading = await this.loadingCtrl.create({
+  //     message: 'Cargando'
+  //   });
+  //   this.presentLoading(loading);
+  //   this.route.data.subscribe(routeData => {
+  //     routeData['data'].subscribe(data => {
+  //       loading.dismiss();
+  //       this.items = data;
+  //       console.log(this.items.length);
+  //     });
+  //   });
+  // }
 
   async presentLoading(loading) {
     return await loading.present();
+  }
+
+  getData(){
+    this.route.data.subscribe(routeData => {
+     let data = routeData['data'];
+     if (data) {
+       this.item = data;
+     }
+    })
+    this.validations_form = this.formBuilder.group({
+      placa: new FormControl(this.item.placa, Validators.required),
+      modelo: new FormControl(this.item.modelo, Validators.required),
+      marca: new FormControl(this.item.marca, Validators.required),
+      color: new FormControl(this.item.color, Validators.required),
+      numero_asiento: new FormControl(this.item.numero_asiento, Validators.required)
+    });
   }
 }

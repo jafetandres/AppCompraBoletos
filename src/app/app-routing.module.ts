@@ -52,11 +52,14 @@ const routes: Routes = [
   {
     path: 'nuevo-pais',
     loadChildren: () => import('./nuevo-pais/nuevo-pais.module').then( m => m.NuevoPaisPageModule)
+<<<<<<< HEAD
   },
   
   {
     path: 'vehiculo',
     loadChildren: () => import('./vehiculo/vehiculo.module').then( m => m.VehiculoPageModule)
+=======
+>>>>>>> 17687413994df9ba1069b23920e6301aeb69e213
   },
   {
     path: 'nueva-provincia',
@@ -83,19 +86,20 @@ const routes: Routes = [
   ,{
     path: 'nuevo-boleto',
     loadChildren: () => import('./nuevo-boleto/nuevo-boleto.module').then( m => m.NuevoBoletoPageModule)
-  },
+  }
+  ,
   {
     path: 'nuevo-vehiculo',
     loadChildren: () => import('./nuevo-vehiculo/nuevo-vehiculo.module').then( m => m.NuevoVehiculoPageModule)
+<<<<<<< HEAD
 
+=======
+  },
+  {
+    path: 'actualizar-vehiculo/:id',
+    loadChildren: () => import('./actualizar-vehiculo/actualizar-vehiculo.module').then( m => m.ActualizarVehiculoPageModule)
+>>>>>>> 17687413994df9ba1069b23920e6301aeb69e213
   }
-
-
-  // {
-  //   path: '',
-  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  // }
-  
 ];
 @NgModule({
   imports: [
