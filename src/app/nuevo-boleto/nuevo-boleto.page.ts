@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/services/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { FirebaseService } from 'src/services/firebase.service';
+import { AuthService } from '../../services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FirebaseService } from '../../services/firebase.service';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+
 @Component({
-  selector: 'app-nueva-provincia',
-  templateUrl: './nueva-provincia.page.html',
-  styleUrls: ['./nueva-provincia.page.scss'],
+  selector: 'app-nuevo-boleto',
+  templateUrl: './nuevo-boleto.page.html',
+  styleUrls: ['./nuevo-boleto.page.scss'],
 })
-export class NuevaProvinciaPage implements OnInit {
+export class NuevoBoletoPage implements OnInit {
   items: Array<any>;
+
   validations_form: FormGroup;
+
   constructor(
     public loadingCtrl: LoadingController,
     private authService: AuthService,
@@ -22,7 +25,7 @@ export class NuevaProvinciaPage implements OnInit {
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
     private webview: WebView
-  ) { }
+    ) { }
 
   ngOnInit() {
     this.resetFields();
@@ -30,6 +33,8 @@ export class NuevaProvinciaPage implements OnInit {
       this.getData();
     }
   }
+
+
 
 
   async getData() {
@@ -58,24 +63,27 @@ export class NuevaProvinciaPage implements OnInit {
       console.log(err);
     })
   }
+
   resetFields(){
 
     this.validations_form = this.formBuilder.group({
-      pais: new FormControl('', Validators.required),
-
-      descripcion: new FormControl('', Validators.required),
-
+      fecha: new FormControl('', Validators.required),
+      estado: new FormControl('', Validators.required),
+      valor: new FormControl('',Validators.required),
+      vehiculo: new FormControl('',Validators.required)
     });
   }
 
+
   onSubmit(value){
     let data = {
-      pais: value.pais,
-      descripcion: value.descripcion,
-     
+      fecha: value.descripcion,
+      estado: value.precio,
+      valor: value.origen,
+      vehiculo: value.destino
      
     }
-    this.firebaseService.crearProvincia(data)
+    this.firebaseService.crearRuta(data)
     .then(
       res => {
         this.router.navigate(["/home"]);
@@ -84,8 +92,4 @@ export class NuevaProvinciaPage implements OnInit {
   }
 
 }
-
-
-
-
 

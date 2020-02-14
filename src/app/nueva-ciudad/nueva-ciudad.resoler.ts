@@ -3,11 +3,12 @@ import { Resolve } from '@angular/router';
 import { FirebaseService } from 'src/services/firebase.service';
 
 @Injectable()
-export class CiudadResolver implements Resolve<any> {
+export class NuevaCiudadResolver implements Resolve<any> {
+
   constructor(private firebaseService: FirebaseService) {
   }
   resolve() {
-
-    return this.firebaseService.getCiudades();
+    
+    return this.firebaseService.getProvincias();
   }
 }

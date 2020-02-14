@@ -46,6 +46,10 @@ const routes: Routes = [
     loadChildren: () => import('./ciudad/ciudad.module').then( m => m.CiudadPageModule)
   },
   {
+    path: 'nueva-ciudad',
+    loadChildren: () => import('./nueva-ciudad/nueva-ciudad.module').then( m => m.NuevaCiudadPageModule)
+  },
+  {
     path: 'nuevo-pais',
     loadChildren: () => import('./nuevo-pais/nuevo-pais.module').then( m => m.NuevoPaisPageModule)
   },
@@ -54,6 +58,16 @@ const routes: Routes = [
     loadChildren: () => import('./nueva-provincia/nueva-provincia.module').then( m => m.NuevaProvinciaPageModule)
   },
   {
+    path: 'vehiculo',
+    loadChildren: () => import('./vehiculo/vehiculo.module').then( m => m.VehiculoPageModule)
+  },
+
+  {
+    path: 'boleto',
+    loadChildren: () => import('./boleto/boleto.module').then( m => m.BoletoPageModule)
+  },
+
+  {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
@@ -61,6 +75,17 @@ const routes: Routes = [
     path: 'actualizar-pais/:id',
     loadChildren: () => import('./actualizar-pais/actualizar-pais.module').then( m => m.ActualizarPaisPageModule)
   }
+  ,{
+    path: 'nuevo-boleto',
+    loadChildren: () => import('./nuevo-boleto/nuevo-boleto.module').then( m => m.NuevoBoletoPageModule)
+  },
+  {
+    path: 'nuevo-vehiculo',
+    loadChildren: () => import('./nuevo-vehiculo/nuevo-vehiculo.module').then( m => m.NuevoVehiculoPageModule)
+
+  }
+
+
   // {
   //   path: '',
   //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)

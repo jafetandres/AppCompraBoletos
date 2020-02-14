@@ -37,7 +37,7 @@ export class FirebaseService {
       
         if(currentUser){
 
-          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('ruta').snapshotChanges();
+          this.snapshotChangesSubscription = this.afs.collection('ruta').snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
       })
@@ -62,6 +62,38 @@ export class FirebaseService {
       
         if(currentUser){
           this.snapshotChangesSubscription = this.afs.collection('provincia').snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      });
+    });
+  }
+  getCiudades() {
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.collection('ciudad').snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      });
+    });
+  }
+  getVehiculos() {
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if (currentUser) {
+          this.snapshotChangesSubscription = this.afs.collection('vehiculo').snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      });
+    });
+  }
+
+  getBoletos() {
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+      
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.collection('boleto').snapshotChanges();
           resolve(this.snapshotChangesSubscription);
         }
       })
@@ -212,6 +244,7 @@ export class FirebaseService {
       )
     })
   }
+
   eliminarPais(taskKey){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
@@ -221,6 +254,18 @@ export class FirebaseService {
         err => reject(err)
       )
     })
+  }
+
+  deleteVehicle(Key) {
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('vehiculo').doc(Key).delete()
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
+
   }
 
   createTask(value){
@@ -240,9 +285,11 @@ export class FirebaseService {
   crearRuta(value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('bd').doc(currentUser.uid).collection('ruta').add({
+      this.afs.collection('ruta').add({
         descripcion: value.descripcion,
-        precio: value.precio
+        precio: value.precio,
+        origen: value.origen,
+        destino: value.destino
       })
       .then(
         res => resolve(res),
@@ -279,6 +326,55 @@ export class FirebaseService {
         err => reject(err)
       )
     })
+  }
+  crearCiudad(value) {
+    return new Promise<any>((resolve, reject) => {
+      const currentUser = firebase.auth().currentUser;
+      this.afs.collection('ciudad').add({
+        provincia: value.provincia,
+        descripcion: value.descripcion,
+
+      })
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
+  }
+  crearVehiculo(value) {
+    return new Promise<any>((resolve, reject) => {
+      const currentUser = firebase.auth().currentUser;
+      this.afs.collection('vehiculo').add({
+        placa: value.placa,
+        modelo: value.modelo,
+        marca: value.marca,
+        color: value.color,
+        numero_asiento: value.numero_asiento,
+
+      })
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
+  }
+
+  crearBoleto(value) {
+    return new Promise<any>((resolve, reject) => {
+      const currentUser = firebase.auth().currentUser;
+      this.afs.collection('boleto').add({
+        fecha: value.fecha,
+        estado: value.estado,
+        descripcion: value.descripcion,
+        valor: value.valor,
+        vehiculo:value.vehiculo
+
+      })
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
   }
 
   encodeImageUri(imageUri, callback) {

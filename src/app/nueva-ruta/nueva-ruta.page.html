@@ -17,6 +17,19 @@
       <ion-label position="floating" color="primary">Precio</ion-label>
       <ion-input type="text" formControlName="precio"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>Seleccione una Ciudad de Origen</ion-label>
+      <ion-select formControlName="origen" >
+        <ion-select-option *ngFor="let item of items" >{{ item.payload.doc.data().descripcion }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+    <ion-label>Seleccione una Ciudad de Destino</ion-label>
+      <ion-select formControlName="destino" >
+        <ion-select-option *ngFor="let item of items" >{{ item.payload.doc.data().descripcion }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+      
     <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Crear</ion-button>
   </form>
 </ion-content>

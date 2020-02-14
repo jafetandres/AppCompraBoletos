@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/services/auth.service';
 import { LoadingController } from '@ionic/angular';
+import { AuthService } from 'src/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-ciudad',
-  templateUrl: './ciudad.page.html',
-  styleUrls: ['./ciudad.page.scss'],
+  selector: 'app-boleto',
+  templateUrl: './boleto.page.html',
+  styleUrls: ['./boleto.page.scss'],
 })
-export class CiudadPage implements OnInit {
+export class BoletoPage implements OnInit {
+
   items: Array<any>;
+
   constructor(
     public loadingCtrl: LoadingController,
     private authService: AuthService,
@@ -22,18 +24,20 @@ export class CiudadPage implements OnInit {
       this.getData();
     }
   }
+
   async getData(){
     const loading = await this.loadingCtrl.create({
       message: 'Cargando'
     });
     this.presentLoading(loading);
+    
     this.route.data.subscribe(routeData => {
       routeData['data'].subscribe(data => {
         loading.dismiss();
         this.items = data;
-        console.log(this.items);
-      });
-    });
+      })
+      
+    })
   }
 
   async presentLoading(loading) {
@@ -46,6 +50,7 @@ export class CiudadPage implements OnInit {
       this.router.navigate([""]);
     }, err => {
       console.log(err);
-    });
+    })
   }
+
 }

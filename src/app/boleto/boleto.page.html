@@ -1,14 +1,14 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['/nueva-ruta']">
+      <ion-button [routerLink]="['/nuevo-boleto']">
         <ion-icon slot="icon-only" name="add"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Rutas</ion-title>
+    <ion-title>Boletos</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,8 +26,9 @@
       </ion-list>
     </div>
     <div *ngIf="items.length == 0" class="empty-list">
-      Porfavor crea una ruta.
+      Porfavor crea un boleto.
     </div>
   </ion-content>
 
 </ion-content>
+
