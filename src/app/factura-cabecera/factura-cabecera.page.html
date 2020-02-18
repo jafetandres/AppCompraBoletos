@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>facturaCabecera</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+
+        <ion-item>
+            <ion-label position="floating" color="primary">Placa</ion-label>
+            <ion-input type="text" formControlName="fecha"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating" color="primary">Modelo</ion-label>
+            <ion-input type="text" formControlName="subtotal"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating" color="primary">Marca</ion-label>
+            <ion-input type="text" formControlName="iva"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating" color="primary">Color</ion-label>
+            <ion-input type="text" formControlName="total"></ion-input>
+        </ion-item>
+        <ion-button class="submit-btn" expand="full" type="submit">Guardar</ion-button>
+    </form>
+
+</ion-content>
+
+
+
+<!-- <ion-button expand="full" (click)="abrirModal();">
+        Abrir Modal
+    </ion-button>
+    <p>
+        Angel - Ecuador
+    </p> -->

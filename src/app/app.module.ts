@@ -40,7 +40,6 @@ import { HttpClientModule} from "@angular/common/http";
     AngularFireModule.initializeApp(environment.firebase),BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     AngularFireDatabase,
-   
     ImagePicker,
     WebView,
     StatusBar,

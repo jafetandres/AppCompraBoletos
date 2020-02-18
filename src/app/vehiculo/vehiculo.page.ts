@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
-import { LoadingController, NavController } from '@ionic/angular';
+import { LoadingController, NavController, MenuController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FirebaseService } from 'src/services/firebase.service';
-import { NuevoVehiculoPage } from '../nuevo-vehiculo/nuevo-vehiculo.page';
 @Component({
   selector: 'app-vehiculo',
   templateUrl: './vehiculo.page.html',
@@ -18,6 +17,7 @@ export class VehiculoPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
+    private menu: MenuController
   ) { }
 
   ngOnInit() {
@@ -60,5 +60,7 @@ actualizar(vehiculoId){
 eiminar(vehicle ){
   this.firebaseService.deleteVehicle(vehicle);
 }
-
+disabeMenu() {
+  this.menu.enable(false);
+}
 }

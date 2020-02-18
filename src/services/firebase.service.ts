@@ -90,6 +90,16 @@ export class FirebaseService {
       });
     });
   }
+  getFormaPagos() {
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if (currentUser) {
+          this.snapshotChangesSubscription = this.afs.collection('formaPago').snapshotChanges();
+          resolve(this.snapshotChangesSubscription);
+        }
+      });
+    });
+  }
 
   getBoletos() {
     return new Promise<any>((resolve, reject) => {
@@ -129,6 +139,34 @@ export class FirebaseService {
           })
         }
       })
+    });
+  }
+  getFormaPago(id){
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.doc<any>('forma-pago/' + id).valueChanges()
+          .subscribe(snapshots => {
+            resolve(snapshots);
+          }, err => {
+            reject(err)
+          })
+        }
+      })
+    });
+  }
+  getCiudad(id) {
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if(currentUser){
+          this.snapshotChangesSubscription = this.afs.doc<any>('ciudad/' + id).valueChanges()
+          .subscribe(snapshots => {
+            resolve(snapshots);
+          }, err => {
+            reject(err);
+          });
+        }
+      });
     });
   }
 
@@ -242,7 +280,27 @@ actualizarVehiculo(key, value){
     );
   });
 }
-    
+actualizarFormaPago(key, value){ 
+  return new Promise<any>((resolve, reject) => {
+    let currentUser = firebase.auth().currentUser;
+    this.afs.collection('formaPago').doc(key).set(value)
+    .then(
+      res => resolve(res),
+      err => reject(err)
+    );
+  });
+}
+ 
+actualizarCiudad(key, value){ 
+  return new Promise<any>((resolve, reject) => {
+    let currentUser = firebase.auth().currentUser;
+    this.afs.collection('ciudad').doc(key).set(value)
+    .then(
+      res => resolve(res),
+      err => reject(err)
+    );
+  });
+}
       
 
 
@@ -329,7 +387,26 @@ actualizarPais(id, value){
         err => reject(err)
       );
     });
-
+  }
+  deleteFormaPago(Key) {
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('formaPago').doc(Key).delete()
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
+  }
+  eliminarCiudad(Key) {
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('ciudad').doc(Key).delete()
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
   }
 
   deleteBoleto(Key) {
@@ -409,6 +486,19 @@ actualizarPais(id, value){
       const currentUser = firebase.auth().currentUser;
       this.afs.collection('ciudad').add({
         provincia: value.provincia,
+        descripcion: value.descripcion,
+
+      })
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      );
+    });
+  }
+  crearFormaPago(value) {
+    return new Promise<any>((resolve, reject) => {
+      const currentUser = firebase.auth().currentUser;
+      this.afs.collection('formaPago').add({
         descripcion: value.descripcion,
 
       })

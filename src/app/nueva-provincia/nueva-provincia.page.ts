@@ -64,15 +64,19 @@ export class NuevaProvinciaPage implements OnInit {
 
   }
 
-
-  onSubmit(){
-    const id = this.afs.createId();
-    const descripcion = this.descripcion;
-    const idPais=this.idPais
-    const provincia: Provincia = { id, idPais, descripcion };
-    this.provinciasCollection.doc(id).set(provincia);
-    this.router.navigate(["/provincia"]);
-   
+  onSubmit(value){
+    let data = {
+      pais: value.pais,
+      descripcion: value.descripcion,
+     
+     
+    }
+    this.firebaseService.crearProvincia(data)
+    .then(
+      res => {
+        this.router.navigate(['/provincia']);
+      }
+    )
   }
 
 }
