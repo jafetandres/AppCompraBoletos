@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, MenuController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -15,7 +15,8 @@ export class PaisPage implements OnInit {
     public loadingCtrl: LoadingController,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private menu: MenuController
   ) { }
 
   ngOnInit() {
@@ -50,7 +51,9 @@ export class PaisPage implements OnInit {
       console.log(err);
     })
   }
-
+disabeMenu() {
+  this.menu.enable(false);
+}
 
 
 }

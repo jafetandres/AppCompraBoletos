@@ -9,6 +9,8 @@ import { BoletoPageRoutingModule } from './boleto-routing.module';
 import { BoletoPage } from './boleto.page';
 import { Routes, RouterModule } from '@angular/router';
 import { BoletoResolver } from './boleto.resolver';
+import { HomePageModule } from '../home/home.module';
+import { HomePage } from '../home/home.page';
 
 const routes: Routes = [
   {
@@ -25,7 +27,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   declarations: [BoletoPage],
   providers: [

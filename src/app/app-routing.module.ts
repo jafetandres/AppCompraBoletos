@@ -5,10 +5,10 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-  },
+  // {
+  //   path: 'home',
+  //   loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+  // },
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then(m => m.RegisterPageModule)
@@ -92,7 +92,39 @@ const routes: Routes = [
   {
     path: 'nuevo-pais',
     loadChildren: () => import('./nuevo-pais/nuevo-pais.module').then(m => m.NuevoPaisPageModule)
-  }
+  },
+  {
+    path: 'actualizar-ciudad/:id',
+    loadChildren: () => import('./actualizar-ciudad/actualizar-ciudad.module').then( m => m.ActualizarCiudadPageModule)
+  },
+  {
+    path: 'forma-pago',
+    loadChildren: () => import('./forma-pago/forma-pago.module').then( m => m.FormaPagoPageModule)
+  },
+  {
+    path: 'nuevo-forma-pago',
+    loadChildren: () => import('./nuevo-forma-pago/nuevo-forma-pago.module').then( m => m.NuevoFormaPagoPageModule)
+  },
+  {
+    path: 'actualizar-forma-pago/:id',
+    loadChildren: () => import('./actualizar-forma-pago/actualizar-forma-pago.module').then( m => m.ActualizarFormaPagoPageModule)
+  },
+  {
+    path: 'factura-cabecera',
+    loadChildren: () => import('./factura-cabecera/factura-cabecera.module').then( m => m.FacturaCabeceraPageModule)
+  },
+  {
+    path: 'factura',
+    loadChildren: () => import('./factura/factura.module').then( m => m.FacturaPageModule)
+  },
+
+  // {
+  //   path: 'factura-detalle',
+  //   loadChildren: () => import('./factura-detalle/factura-detalle.module').then( m => m.FacturaDetallePageModule)
+  // }
+
+
+
 ];
 
 @NgModule({

@@ -17,7 +17,7 @@ export class VehiculoActualizarResolver implements Resolve<any> {
         resolve(data);
       }, err => {
         reject(err);
-      })
-    })
+      });
+    });
   }
 }

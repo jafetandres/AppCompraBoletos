@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, MenuController } from '@ionic/angular';
 import { AuthService } from 'src/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FirebaseService } from 'src/services/firebase.service';
@@ -19,6 +19,7 @@ export class BoletoPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
+    private menu: MenuController
 
   ) { }
 
@@ -59,6 +60,11 @@ export class BoletoPage implements OnInit {
   eliminar(boleto){
     console.log("Lega correcto", boleto);
     this.firebaseService.deleteBoleto(boleto);
+  }
+  toggleMenu() {
+    this.menu.toggle();
+    this.menu.enable(true);
+
   }
 
 }

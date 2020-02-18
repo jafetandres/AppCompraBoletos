@@ -85,7 +85,7 @@ export class NuevaRutaPage implements OnInit {
     this.firebaseService.crearRuta(data)
     .then(
       res => {
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/ruta"]);
       }
     )
   }

@@ -78,7 +78,7 @@ export class NuevaProvinciaPage implements OnInit {
     this.firebaseService.crearProvincia(data)
     .then(
       res => {
-        this.router.navigate(["/home"]);
+        this.router.navigate(['/provincia']);
       }
     )
   }

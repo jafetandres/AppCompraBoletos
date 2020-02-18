@@ -37,7 +37,6 @@ import { AngularFireDatabase } from '@angular/fire/database';
     AngularFireModule.initializeApp(environment.firebase),BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     AngularFireDatabase,
-   
     ImagePicker,
     WebView,
     StatusBar,

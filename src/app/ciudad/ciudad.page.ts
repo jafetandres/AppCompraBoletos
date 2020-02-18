@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, MenuController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FirebaseService } from 'src/services/firebase.service';
 
 @Component({
   selector: 'app-ciudad',
@@ -14,7 +15,9 @@ export class CiudadPage implements OnInit {
     public loadingCtrl: LoadingController,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private firebaseService: FirebaseService,
+    private menu: MenuController
   ) { }
 
   ngOnInit() {
@@ -47,5 +50,14 @@ export class CiudadPage implements OnInit {
     }, err => {
       console.log(err);
     });
+  }
+  actualizar(ciudadId){
+    this.router.navigate(['/actualizar-ciudad', ciudadId]);
+  }
+  eiminar(ciudad ){
+    this.firebaseService.eliminarCiudad(ciudad);
+  }
+  disabeMenu() {
+    this.menu.enable(false);
   }
 }
