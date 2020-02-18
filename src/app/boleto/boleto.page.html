@@ -1,10 +1,6 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-buttons slot="end">
-            <ion-button [routerLink]="['/nuevo-boleto']">
-                <ion-icon slot="icon-only" name="add"></ion-icon>
-            </ion-button>
-        </ion-buttons>
+      
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/home"></ion-back-button>
         </ion-buttons>
@@ -13,26 +9,57 @@
 </ion-header>
 
 <ion-content>
-    <ion-content *ngIf="items" class="list-mini-content" padding>
+    <ion-card style="height: 100%;">
+
+        <ion-card-content>
+            <ion-row>
+                <ion-col class="label">
+                    Punto de partida:
+                </ion-col>
+                <ion-col [size]="12">
+
+                    <ion-auto-complete [(model)]="desde" [multi]="false" [dataProvider]="provider" [disabled]="false"
+                        [maxResults]="6" [removeButtonColor]="'dark'" (ionAutoInput)="on('ionAutoInput', $event)"
+                        (itemsChange)="on('itemsChange', $event)" (itemsCleared)="on('itemsCleared', $event)"
+                        (itemsHidden)="on('itemsHidden', $event)" (itemRemoved)="on('itemRemoved', $event)"
+                        (itemSelected)="on('itemSelected', $event)" (itemsShown)="on('itemsShown', $event)"
+                        #desdeSeacrhBar>
+                    </ion-auto-complete>
+
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col class="label">
+                    Punto de llegada:
+                </ion-col>
+                <ion-col [size]="12">
+                    <ion-auto-complete [(model)]="hasta" [multi]="false" [dataProvider]="provider" [disabled]="false"
+                        [maxResults]="6" [removeButtonColor]="'dark'" (ionAutoInput)="on('ionAutoInput', $event)"
+                        (itemsChange)="on('itemsChange', $event)" (itemsCleared)="on('itemsCleared', $event)"
+                        (itemsHidden)="on('itemsHidden', $event)" (itemRemoved)="on('itemRemoved', $event)"
+                        (itemSelected)="on('itemSelected', $event)" (itemsShown)="on('itemsShown', $event)"
+                        #hastaSeacrhBar>
+                    </ion-auto-complete>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+        <ion-button [size]="'full'" (click)="buscarBoleto()">
+            Buscar Boleto
+        </ion-button>
+ 
+<ion-item *ngIf="rutaCompleta.length > 0">
+
+    <ion-input [(ngModel)]="rutaCompleta" value="{{rutaCompleta}}" disabled> Boleto: </ion-input>
+    <ion-label slot="end">{{precio}}</ion-label>
+    <ion-button (click)="comprar()" >Comprar</ion-button>
+
+</ion-item>
+
+    </ion-card>
 
 
-        <div *ngIf="items.length > 0" class="list-mini">
-            <ion-list>
-                <ion-item-sliding *ngFor="let item of items">
-                    <ion-item>
-                        <ion-label>{{ item.payload.doc.data().estado }}</ion-label>
-                    </ion-item>
-                    <ion-item-options side="end">
-                        <ion-item-option color="danger" (click)="eliminar(item.payload.doc.id)">
-                            <ion-icon slot="icon-only" name="trash"></ion-icon>
-                        </ion-item-option>
-                    </ion-item-options>
-                </ion-item-sliding>
-            </ion-list>
-        </div>
-        <div *ngIf="items.length == 0" class="empty-list">
-            Porfavor crea un boleto.
-        </div>
-    </ion-content>
+
+
 
 </ion-content>

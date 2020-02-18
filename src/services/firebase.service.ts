@@ -30,6 +30,8 @@ export class FirebaseService {
       })
     })
   }
+
+
   getRutas(){
     
     return new Promise<any>((resolve, reject) => {
@@ -44,6 +46,7 @@ export class FirebaseService {
     })
   }
   getPaises(){
+
     
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
@@ -144,6 +147,23 @@ export class FirebaseService {
       })
     });
   }
+
+  getProvincia(id){
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.user.subscribe(currentUser => {
+        if(currentUser){
+          
+          this.snapshotChangesSubscription = this.afs.doc<any>('provincia/'+ id).valueChanges()
+          .subscribe(snapshots => {
+            resolve(snapshots);
+          }, err => {
+            reject(err)
+          })
+        }
+      })
+    });
+  }
+
   getPerfil(){
 
     return new Promise<any>((resolve, reject) => {
@@ -236,6 +256,16 @@ actualizarPais(id, value){
       )
     })
   }
+  actualizarProvincia(id, value){
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('provincia').doc(id).set(value)
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+    })
+  }
 
   actualizarPerfil(imageURI,value){
 
@@ -269,10 +299,20 @@ actualizarPais(id, value){
     })
   }
 
-  eliminarPais(taskKey){
+  eliminarPais(id){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('pais').doc(taskKey).delete()
+      this.afs.collection('pais').doc(id).delete()
+      .then(
+        res => resolve(res),
+        err => reject(err)
+      )
+    })
+  }
+  eliminarProvincia(id){
+    return new Promise<any>((resolve, reject) => {
+      let currentUser = firebase.auth().currentUser;
+      this.afs.collection('provincia').doc(id).delete()
       .then(
         res => resolve(res),
         err => reject(err)
@@ -336,6 +376,7 @@ actualizarPais(id, value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
       this.afs.collection('pais').add({
+        id: this.afs.createId(),
         descripcion: value.descripcion,
       })
       // this.afs.collection('people').doc(currentUser.uid).collection('pais').add({
@@ -350,6 +391,7 @@ actualizarPais(id, value){
   crearProvincia(value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
+      // this.afs.collection('pais').doc(value.pais.uid).collection('provincia').add({
       this.afs.collection('provincia').add({
         pais: value.pais,
         descripcion: value.descripcion,

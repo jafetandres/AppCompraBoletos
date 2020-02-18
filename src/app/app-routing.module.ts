@@ -92,6 +92,22 @@ const routes: Routes = [
   {
     path: 'nuevo-pais',
     loadChildren: () => import('./nuevo-pais/nuevo-pais.module').then(m => m.NuevoPaisPageModule)
+  },
+  {
+    path: 'actualizar-provincia/:id',
+    loadChildren: () => import('./actualizar-provincia/actualizar-provincia.module').then( m => m.ActualizarProvinciaPageModule)
+  },
+  {
+    path: 'rate',
+    loadChildren: () => import('./rate/rate.module').then( m => m.RatePageModule)
+  },
+  {
+    path: 'pagar/:precio/:rutacompleta',
+    loadChildren: () => import('./pagar/pagar.module').then( m => m.PagarPageModule)
+  },
+  {
+    path: 'facturas',
+    loadChildren: () => import('./facturas/facturas.module').then( m => m.FacturasPageModule)
   }
 ];
 

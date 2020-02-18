@@ -1,23 +1,24 @@
 <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="pais"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Pais</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content padding>
-  
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="pais"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pais</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
-      <ion-item>
-        <ion-label position="floating" color="primary">Descripcion</ion-label>
-        <ion-input type="text" formControlName="descripcion"></ion-input>
-      </ion-item>
-  
-      <ion-button class="submit-button" expand="block" type="submit" [disabled]="!validations_form.valid">Guardar</ion-button>
-    </form>
-    <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Eliminar</ion-button>
-  
-  </ion-content>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="onSubmit(pais)">
+    <ion-item>
+      <ion-label position="floating" color="primary">ID</ion-label>
+      <ion-input  [(ngModel)]="pais.id" name="id" type="text" value="{{ (pais | async)?.id }}" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">Descripcion</ion-label>
+      <ion-input [(ngModel)]="pais.descripcion" name="descripcion" type="text"
+        value="{{ (pais | async)?.descripcion }}"></ion-input>
+    </ion-item>
+    <ion-button type="submit" expand="block">Guardar</ion-button>
+  </form>
+</ion-content>

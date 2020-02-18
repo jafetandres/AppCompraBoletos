@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"/pais\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Nueva ciudad</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <form [formGroup]=\"validations_form\" (ngSubmit)=\"onSubmit(validations_form.value)\">\n        <ion-item>\n            <ion-label>Seleccione una Provincia</ion-label>\n            <ion-select formControlName=\"descripcion\">\n                <ion-select-option *ngFor=\"let item of items\">{{item.payload.doc.data().descripcion}}</ion-select-option>\n            </ion-select>\n        </ion-item>\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Descripcion</ion-label>\n            <ion-input type=\"text\" formControlName=\"descripcion\"></ion-input>\n        </ion-item>\n        <ion-button class=\"submit-btn\" expand=\"block\" type=\"submit\">Crear</ion-button>\n    </form>\n</ion-content>"
+module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"/pais\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Nueva ciudad</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <form [formGroup]=\"validations_form\" (ngSubmit)=\"onSubmit(validations_form.value)\">\n        <ion-item>\n            <ion-label>Seleccione una Provincia</ion-label>\n            <ion-select formControlName=\"provincia\">\n                <ion-select-option *ngFor=\"let item of items\">{{item.payload.doc.data().descripcion}}</ion-select-option>\n            </ion-select>\n        </ion-item>\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Descripcion</ion-label>\n            <ion-input type=\"text\" formControlName=\"descripcion\"></ion-input>\n        </ion-item>\n        <ion-button class=\"submit-btn\" expand=\"block\" type=\"submit\" [disabled]=\"!validations_form.valid\">Crear</ion-button>\n    </form>\n</ion-content>"
 
 /***/ }),
 
@@ -148,7 +148,7 @@ var NuevaCiudadPage = /** @class */ (function () {
         };
         this.firebaseService.crearCiudad(data)
             .then(function (res) {
-            _this.router.navigate(["/home"]);
+            _this.router.navigate(["/ciudad"]);
         });
     };
     NuevaCiudadPage.prototype.getData = function () {

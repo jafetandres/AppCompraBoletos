@@ -1,37 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { IonicModule } from '@ionic/angular';
-import { Routes, RouterModule} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { ActualizarPaisPageRoutingModule } from './actualizar-pais-routing.module';
-
 import { ActualizarPaisPage } from './actualizar-pais.page';
-import { ActualizarPaisResolver } from './actualizar-pais.resolver';
+import { HttpClientModule } from '@angular/common/http';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: ActualizarPaisPage,
-    resolve: {
-      data: ActualizarPaisResolver
-    }
-  }
-];
+
 
 @NgModule({
   imports: [
+    HttpClientModule,
     CommonModule,
     FormsModule,
+    
     IonicModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes)
-
-
+   
+    ActualizarPaisPageRoutingModule
   ],
   declarations: [ActualizarPaisPage],
-  providers:[ActualizarPaisResolver]
+  providers:[]
 
 })
 export class ActualizarPaisPageModule {}

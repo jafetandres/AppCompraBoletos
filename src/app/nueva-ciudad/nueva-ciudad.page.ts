@@ -5,6 +5,12 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { LoadingController, ToastController } from '@ionic/angular';
 import { FirebaseService } from 'src/services/firebase.service';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import { Provincia } from 'src/models/provincia.model';
+import { Observable } from 'rxjs';
+import { Ciudad } from 'src/models/ciudad.model';
+import { map } from 'rxjs/operators';
+export interface ProvinciaId extends Provincia { id: string; }
 
 @Component({
   selector: 'app-nueva-ciudad',
@@ -14,6 +20,13 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 export class NuevaCiudadPage implements OnInit {
   items: Array<any>;
   validations_form: FormGroup;
+  descripcion='';
+  idProvincia='';
+  private provinciasCollection: AngularFirestoreCollection<Provincia>;
+  provincias: Observable<ProvinciaId[]>;
+  provincia: Observable<Provincia>;
+  private ciudadesCollection: AngularFirestoreCollection<Ciudad>;
+
 
   constructor(
     public toastCtrl: ToastController,
@@ -23,57 +36,36 @@ export class NuevaCiudadPage implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
-    private webview: WebView
-    ) { }
+    public afs: AngularFirestore,
+    ) { 
+      this.ciudadesCollection = this.afs.collection<Ciudad>('ciudad');
+
+    }
 
     ngOnInit() {
-      this.resetFields();
-      if (this.route && this.route.data) {
-        this.getData();
-      }
+      this.getProvincias();
     }
     
-  logout() {
-    this.authService.doLogout()
-    .then(res => {
-      this.router.navigate([""]);
-    }, err => {
-      console.log(err);
-    })
-  }
-    resetFields(){
-      this.validations_form = this.formBuilder.group({
-        provincia: new FormControl('', Validators.required),
-        descripcion: new FormControl('', Validators.required),
-      });
-    }
-    onSubmit(value){
-      let data = {
-        provincia: value.provincia,
-        descripcion: value.descripcion,
-      }
-      this.firebaseService.crearCiudad(data)
-      .then(
-        res => {
-          this.router.navigate(["/ciudad"]);
-        }
-      )
-    }
-    async getData() {
-      const loading = await this.loadingCtrl.create({
-        message: 'Cargando'
-      });
-      this.presentLoading(loading);
-      this.route.data.subscribe(routeData => {
-        routeData['data'].subscribe(data => {
-          loading.dismiss();
-          this.items = data;
-          console.log(this.items.length);
-        });
-      });
-    }
+ 
+    async getProvincias() {
+      this.provinciasCollection = this.afs.collection<Provincia>('provincia');
+      this.provincias = this.provinciasCollection.snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as Provincia;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      );
   
-    async presentLoading(loading) {
-      return await loading.present();
     }
+    onSubmit(){
+      const id = this.afs.createId();
+      const descripcion = this.descripcion;
+      const idProvincia=this.idProvincia
+      const ciudad: Ciudad = { id, idProvincia, descripcion };
+      this.ciudadesCollection.doc(id).set(ciudad);
+      this.router.navigate(["/ciudad"]);
+     
+    }
+    
 }

@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { Pais } from 'src/models/pais.model';
+import { map } from 'rxjs/operators';
+export interface PaisId extends Pais { id: string; }
+
 
 @Component({
   selector: 'app-pais',
@@ -9,47 +15,46 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./pais.page.scss'],
 })
 export class PaisPage implements OnInit {
-  items: Array<any>;
+  private paisesCollection: AngularFirestoreCollection<Pais>;
+  paises: Observable<PaisId[]>;
+  private paisDoc: AngularFirestoreDocument<Pais>;
+  pais: Observable<Pais>;
+  id;
 
   constructor(
     public loadingCtrl: LoadingController,
-    private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    public afs: AngularFirestore,
+  ) { 
+  }
+
 
   ngOnInit() {
-    if (this.route && this.route.data) {
-      this.getData();
-    }
-  }
-  async getData(){
-    const loading = await this.loadingCtrl.create({
-      message: 'Cargando'
-    });
-    this.presentLoading(loading);
-    
-    this.route.data.subscribe(routeData => {
-      routeData['data'].subscribe(data => {
-        loading.dismiss();
-        this.items = data;
-      })
-      
-    })
+    this.getPaises();
   }
 
-  async presentLoading(loading) {
-    return await loading.present();
+  async getPaises() {
+    this.paisesCollection = this.afs.collection<Pais>('pais');
+    this.paises = this.paisesCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Pais;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+
   }
 
-  logout(){
-    this.authService.doLogout()
-    .then(res => {
-      this.router.navigate([""]);
-    }, err => {
-      console.log(err);
-    })
+  actualizar(id){
+    this.router.navigate(['/actualizar-pais', id]);
   }
+  eiminar(id){
+    this.paisDoc = this.afs.doc<Pais>('pais/' + id);
+    this.pais = this.paisDoc.valueChanges();
+    this.paisDoc.delete();
+  }
+
+
 
 
 

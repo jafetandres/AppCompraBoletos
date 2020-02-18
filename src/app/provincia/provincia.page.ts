@@ -2,53 +2,56 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
+import { Provincia } from 'src/models/provincia.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+export interface ProvinciaId extends Provincia { id: string; }
+
 @Component({
   selector: 'app-provincia',
   templateUrl: './provincia.page.html',
   styleUrls: ['./provincia.page.scss'],
 })
 export class ProvinciaPage implements OnInit {
-  items: Array<any>;
+  private provinciasCollection: AngularFirestoreCollection<Provincia>;
+  provincias: Observable<ProvinciaId[]>;
+  private provinciaDoc: AngularFirestoreDocument<Provincia>;
+  provincia: Observable<Provincia>;
+  id;
   
   constructor(
     public loadingCtrl: LoadingController,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public afs: AngularFirestore,
   ) { }
 
   ngOnInit() {
-    if (this.route && this.route.data) {
-      this.getData();
-    }
+   this.getProvincias();
   }
 
-  async getData(){
-    const loading = await this.loadingCtrl.create({
-      message: 'Cargando'
-    });
-    this.presentLoading(loading);
-    
-    this.route.data.subscribe(routeData => {
-      routeData['data'].subscribe(data => {
-        loading.dismiss();
-        this.items = data;
-      })
-      
-    })
+  async getProvincias() {
+    this.provinciasCollection = this.afs.collection<Provincia>('provincia');
+    this.provincias = this.provinciasCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Provincia;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+
   }
 
-  async presentLoading(loading) {
-    return await loading.present();
+  actualizar(id){
+    this.router.navigate(['/actualizar-provincia', id]);
+  }
+  eiminar(id){
+    this.provinciaDoc = this.afs.doc<Provincia>('provincia/' + id);
+    this.provincia = this.provinciaDoc.valueChanges();
+    this.provinciaDoc.delete();
   }
 
-  logout(){
-    this.authService.doLogout()
-    .then(res => {
-      this.router.navigate([""]);
-    }, err => {
-      console.log(err);
-    })
-  }
 
 }

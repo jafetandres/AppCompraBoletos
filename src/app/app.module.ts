@@ -19,14 +19,17 @@ import { ConnectivityService } from 'src/services/connectivity.service';
 import { GoogleMapsService } from 'src/services/google-maps.service';
 import { Network } from '@ionic-native/network/ngx/';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-
+import { AutoCompleteModule } from 'ionic4-auto-complete';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { HttpClientModule} from "@angular/common/http";
 // import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
+    HttpClientModule,
+    AutoCompleteModule,
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,

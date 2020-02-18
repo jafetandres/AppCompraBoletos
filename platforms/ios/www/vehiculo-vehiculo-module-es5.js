@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-buttons slot=\"end\">\n            <ion-button [routerLink]=\"['/nuevo-vehiculo']\">\n                <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n        <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"/home\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Vehiculo</ion-title>\n    </ion-toolbar>\n</ion-header>\n<ion-content>\n    <ion-content *ngIf=\"items\" class=\"list-mini-content\" padding>\n        <div *ngIf=\"items.length > 0\" class=\"list-mini\">\n            <ion-list>\n                <ion-item-sliding *ngFor=\"let item of items\">\n                    <ion-item>\n                        <ion-label>\n                            <h3>Vehiculo</h3>\n                            <p>\n                                {{item.payload.doc.data().placa}}\n                            </p>\n                        </ion-label>\n                        <ion-label slot=\"end\" text-right>{{item.payload.doc.data().marca}}</ion-label>\n                    </ion-item>\n\n                    <ion-item-options side=\"start\">\n                        <ion-item-option color=\"secondary\" (click)=\"actualizar(item)\">\n                            <ion-icon slot=\"icon-only\" name=\"md-create\"></ion-icon>\n                        </ion-item-option>\n                    </ion-item-options>\n\n                    <ion-item-options side=\"end\">\n                        <ion-item-option color=\"danger\" (click)=\"eiminar(item.payload.doc.data())\">\n                            <ion-icon slot=\"icon-only\" name=\"trash\"></ion-icon>\n                        </ion-item-option>\n                    </ion-item-options>\n\n                </ion-item-sliding>\n            </ion-list>\n        </div>\n        <div *ngIf=\"items.length == 0\" class=\"empty-list\">\n            Porfavor ingrese un vehiculo.\n        </div>\n    </ion-content>"
+module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-buttons slot=\"end\">\n            <ion-button [routerLink]=\"['/nuevo-vehiculo']\">\n                <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n        <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"/home\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Vehiculo</ion-title>\n    </ion-toolbar>\n</ion-header>\n<ion-content>\n    <ion-content *ngIf=\"items\" class=\"list-mini-content\" padding>\n        <div *ngIf=\"items.length > 0\" class=\"list-mini\">\n            <ion-list>\n                <ion-item-sliding *ngFor=\"let item of items\">\n                    <ion-item>\n                        <ion-label>\n                            <h3>Vehiculo</h3>\n                            <p>\n                                {{item.payload.doc.data().placa}}\n                            </p>\n                        </ion-label>\n                        <ion-label slot=\"end\" text-right>{{item.payload.doc.data().marca}}</ion-label>\n                    </ion-item>\n\n                    <ion-item-options side=\"start\">\n                        <ion-item-option color=\"secondary\" (click)=\"actualizar(item.payload.doc.id)\">\n                            <ion-icon slot=\"icon-only\" name=\"md-create\"></ion-icon>\n                        </ion-item-option>\n                    </ion-item-options>\n\n                    <ion-item-options side=\"end\">\n                        <ion-item-option color=\"danger\" (click)=\"eiminar(item.payload.doc.id)\">\n                            <ion-icon slot=\"icon-only\" name=\"trash\"></ion-icon>\n                        </ion-item-option>\n                    </ion-item-options>\n\n                </ion-item-sliding>\n            </ion-list>\n        </div>\n        <div *ngIf=\"items.length == 0\" class=\"empty-list\">\n            Porfavor ingrese un vehiculo.\n        </div>\n    </ion-content>"
 
 /***/ }),
 
@@ -104,7 +104,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var VehiculoPage = /** @class */ (function () {
-    function VehiculoPage(loadingCtrl, authService, router, route, firebaseService) {
+    function VehiculoPage(navCtrl, loadingCtrl, authService, router, route, firebaseService) {
+        this.navCtrl = navCtrl;
         this.loadingCtrl = loadingCtrl;
         this.authService = authService;
         this.router = router;
@@ -159,14 +160,15 @@ var VehiculoPage = /** @class */ (function () {
             console.log(err);
         });
     };
-    VehiculoPage.prototype.actualizar = function (vehicle) {
-        console.log("Lega correcto", vehicle);
+    VehiculoPage.prototype.actualizar = function (vehiculoId) {
+        console.log("Lega correcto", vehiculoId);
+        this.router.navigate(['/actualizar-vehiculo', vehiculoId]);
     };
     VehiculoPage.prototype.eiminar = function (vehicle) {
-        console.log("Lega correcto", vehicle);
         this.firebaseService.deleteVehicle(vehicle);
     };
     VehiculoPage.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"] },
         { type: src_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
@@ -179,7 +181,8 @@ var VehiculoPage = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./vehiculo.page.html */ "./node_modules/raw-loader/index.js!./src/app/vehiculo/vehiculo.page.html"),
             styles: [__webpack_require__(/*! ./vehiculo.page.scss */ "./src/app/vehiculo/vehiculo.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"],
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"],
             src_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],

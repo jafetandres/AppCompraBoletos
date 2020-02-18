@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="boleto"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Pagar Boleto</ion-title>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <h3  color="primary">Ruta: {{rutaCompleta}}</h3>
+    <br>
+    <ion-label  color="primary">Precio: {{precio}}</ion-label>
+    <br>
+    <ion-label  color="primary">IVA:       %12</ion-label>
+    <br>
+    <ion-label  color="primary">Total: {{total}}</ion-label>
+
+    <ion-button (click)="pagar()" expand="block" >Pagar</ion-button>
+
+</ion-content>

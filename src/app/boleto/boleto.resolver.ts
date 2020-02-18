@@ -12,6 +12,6 @@ export class BoletoResolver implements Resolve<any> {
   }
   resolve() {
     
-    return this.firebaseService.getBoletos();
+    // return this.firebaseService.getBoletos();
   }
 }

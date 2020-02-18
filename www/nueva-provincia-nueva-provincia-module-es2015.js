@@ -163,7 +163,7 @@ let NuevaProvinciaPage = class NuevaProvinciaPage {
         };
         this.firebaseService.crearProvincia(data)
             .then(res => {
-            this.router.navigate(["/home"]);
+            this.router.navigate(["/provincia"]);
         });
     }
 };
@@ -216,7 +216,6 @@ __webpack_require__.r(__webpack_exports__);
 let NuevaProvinciaResolver = class NuevaProvinciaResolver {
     constructor(firebaseService) {
         this.firebaseService = firebaseService;
-        console.log("aqui es ");
     }
     resolve() {
         return this.firebaseService.getPaises();

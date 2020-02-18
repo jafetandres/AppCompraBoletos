@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-buttons slot=\"end\">\n            <ion-button [routerLink]=\"['/perfil']\">\n                <ion-icon src=\"../assets/icon/person-circle-outline.svg\" name=\"person-circle-outline\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n        <ion-title>Compra Boletos</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<!-- <ion-content *ngIf=\"items\" class=\"list-mini-content\" padding>\n     <ion-button [routerLink]=\"['/location-select']\">Ir a GPS</ion-button> \n\n    <div *ngIf=\"items.length > 0\" class=\"list-mini\">\n      <ion-list>\n        <ion-item *ngFor=\"let item of items\" [routerLink]=\"['/details', item.payload.doc.id]\">\n          <ion-thumbnail slot=\"start\">\n            <img [src]=\"item.payload.doc.data().image\">\n          </ion-thumbnail>\n          <ion-label>{{item.payload.doc.data().title}}</ion-label>\n          <ion-button fill=\"clear\" slot=\"end\">Details</ion-button>\n        </ion-item>\n      </ion-list>\n    </div>\n    <div *ngIf=\"items.length == 0\" class=\"empty-list\">\n      Please create your first task.\n    </div>\n  </ion-content> -->\n<ion-content>\n    <ion-list>\n        <ion-item [routerLink]=\"['/pais']\">\n            <ion-label>Pais</ion-label>\n        </ion-item>\n        <ion-item [routerLink]=\"['/provincia']\">\n            <ion-label>Provincia</ion-label>\n        </ion-item>\n        <ion-item [routerLink]=\"['/ciudad']\">\n            <ion-label>Ciudad</ion-label>\n        </ion-item>\n\n\n\n        <ion-item [routerLink]=\"['/vehiculo']\">\n            <ion-label>Vehiculo</ion-label>\n        </ion-item>\n\n        <ion-item [routerLink]=\"['/ruta']\">\n            <ion-label>Rutas</ion-label>\n        </ion-item>\n\n        <ion-item [routerLink]=\"['/boleto']\">\n            <ion-label>Boleto</ion-label>\n        </ion-item>\n\n    </ion-list>\n\n</ion-content>\n<ion-footer>\n    <ion-toolbar color=\"medium\">\n        <ion-title>Cerrar Sesion</ion-title>\n    </ion-toolbar>\n</ion-footer>"
+module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-buttons slot=\"end\">\n            <ion-button [routerLink]=\"['/perfil']\">\n                <ion-icon src=\"../assets/icon/person-circle-outline.svg\" name=\"person-circle-outline\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n        <ion-title>Compra Boletos</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<!-- <ion-content *ngIf=\"items\" class=\"list-mini-content\" padding>\n     <ion-button [routerLink]=\"['/location-select']\">Ir a GPS</ion-button> \n\n    <div *ngIf=\"items.length > 0\" class=\"list-mini\">\n      <ion-list>\n        <ion-item *ngFor=\"let item of items\" [routerLink]=\"['/details', item.payload.doc.id]\">\n          <ion-thumbnail slot=\"start\">\n            <img [src]=\"item.payload.doc.data().image\">\n          </ion-thumbnail>\n          <ion-label>{{item.payload.doc.data().title}}</ion-label>\n          <ion-button fill=\"clear\" slot=\"end\">Details</ion-button>\n        </ion-item>\n      </ion-list>\n    </div>\n    <div *ngIf=\"items.length == 0\" class=\"empty-list\">\n      Please create your first task.\n    </div>\n  </ion-content> -->\n<ion-content>\n    <ion-list>\n        <ion-item [routerLink]=\"['/pais']\">\n            <ion-label>Pais</ion-label>\n        </ion-item>\n        <ion-item [routerLink]=\"['/provincia']\">\n            <ion-label>Provincia</ion-label>\n        </ion-item>\n        <ion-item [routerLink]=\"['/ciudad']\">\n            <ion-label>Ciudad</ion-label>\n        </ion-item>\n\n\n\n        <ion-item [routerLink]=\"['/vehiculo']\">\n            <ion-label>Vehiculo</ion-label>\n        </ion-item>\n\n        <ion-item [routerLink]=\"['/ruta']\">\n            <ion-label>Rutas</ion-label>\n        </ion-item>\n\n        <ion-item [routerLink]=\"['/boleto']\">\n            <ion-label>Boleto</ion-label>\n        </ion-item>\n       \n\n    </ion-list>\n\n</ion-content>\n<ion-footer (click)=\"logout()\">\n    <ion-toolbar color=\"medium\">\n        <ion-title>Cerrar Sesion</ion-title>\n    </ion-toolbar>\n</ion-footer>"
 
 /***/ }),
 
@@ -76,7 +76,7 @@ HomePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5wYWdlLnNjc3MifQ== */"
+module.exports = ".my-custom-menu {\n  --width: 500px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qYWZldGFuZHJlc2dhbHZlenF1ZXphZGEvRHJvcGJveC9Qcm95ZWN0b3NJb25pYy9BcHBDb21wcmFCb2xldG9zL3NyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyIsInNyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGNBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubXktY3VzdG9tLW1lbnUge1xuICAgIC0td2lkdGg6IDUwMHB4O1xuICB9IiwiLm15LWN1c3RvbS1tZW51IHtcbiAgLS13aWR0aDogNTAwcHg7XG59Il19 */"
 
 /***/ }),
 
@@ -100,12 +100,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let HomePage = class HomePage {
-    constructor(loadingCtrl, authService, router, route) {
+    constructor(loadingCtrl, authService, router, route, menu) {
         this.loadingCtrl = loadingCtrl;
         this.authService = authService;
         this.router = router;
         this.route = route;
+        this.menu = menu;
+    }
+    openFirst() {
+        this.menu.enable(true, 'first');
+        this.menu.open('first');
+    }
+    openEnd() {
+        this.menu.open('end');
+    }
+    openCustom() {
+        this.menu.enable(true, 'custom');
+        this.menu.open('custom');
     }
     ngOnInit() {
         if (this.route && this.route.data) {
@@ -144,7 +157,8 @@ HomePage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"] },
     { type: src_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["MenuController"] }
 ];
 HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -155,7 +169,8 @@ HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"],
         src_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"],
         _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]])
+        _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["MenuController"]])
 ], HomePage);
 
 

@@ -186,7 +186,7 @@ var NuevoBoletoPage = /** @class */ (function () {
         };
         this.firebaseService.crearBoleto(data)
             .then(function (res) {
-            _this.router.navigate(["/home"]);
+            _this.router.navigate(["/boleto"]);
         });
     };
     NuevoBoletoPage.ctorParameters = function () { return [

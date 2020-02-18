@@ -167,7 +167,7 @@ let NuevoBoletoPage = class NuevoBoletoPage {
         };
         this.firebaseService.crearBoleto(data)
             .then(res => {
-            this.router.navigate(["/home"]);
+            this.router.navigate(["/boleto"]);
         });
     }
 };

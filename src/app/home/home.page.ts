@@ -18,10 +18,13 @@ export class HomePage implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-   
+
     private menu: MenuController
   ) { }
+  toggleMenu() {
+    this.menu.toggle();
 
+  }
 
   openFirst() {
     this.menu.enable(true, 'first');
@@ -40,7 +43,7 @@ export class HomePage implements OnInit {
     if (this.route && this.route.data) {
       this.getData();
     }
-  
+
   }
 
 
@@ -50,13 +53,13 @@ export class HomePage implements OnInit {
       message: 'Cargando'
     });
     this.presentLoading(loading);
-    
+
     this.route.data.subscribe(routeData => {
       routeData['data'].subscribe(data => {
         loading.dismiss();
         this.items = data;
       })
-      
+
     })
   }
 
@@ -74,3 +77,4 @@ export class HomePage implements OnInit {
   }
 
 }
+

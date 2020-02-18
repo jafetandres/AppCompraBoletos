@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"/pais\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Nuevo Vehiculo</ion-title>\n    </ion-toolbar>\n</ion-header>\n<ion-content padding>\n    <form [formGroup]=\"validations_form\" (ngSubmit)=\"onSubmit(validations_form.value)\">\n\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Placa</ion-label>\n            <ion-input type=\"text\" formControlName=\"placa\"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Modelo</ion-label>\n            <ion-input type=\"text\" formControlName=\"modelo\"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Marca</ion-label>\n            <ion-input type=\"text\" formControlName=\"marca\"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Color</ion-label>\n            <ion-input type=\"text\" formControlName=\"color\"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Num. Asientos</ion-label>\n            <ion-input type=\"number\" formControlName=\"numero_asiento\"></ion-input>\n        </ion-item>\n        <ion-button class=\"submit-btn\" expand=\"block\" type=\"submit\">Crear</ion-button>\n    </form>\n\n</ion-content>"
+module.exports = "<ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"/pais\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Nuevo Vehiculo</ion-title>\n    </ion-toolbar>\n</ion-header>\n<ion-content padding>\n    <form [formGroup]=\"validations_form\" (ngSubmit)=\"onSubmit(validations_form.value)\">\n\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Placa</ion-label>\n            <ion-input type=\"text\" formControlName=\"placa\"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Modelo</ion-label>\n            <ion-input type=\"text\" formControlName=\"modelo\"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Marca</ion-label>\n            <ion-input type=\"text\" formControlName=\"marca\"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Color</ion-label>\n            <ion-input type=\"text\" formControlName=\"color\"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label position=\"floating\" color=\"primary\">Num. Asientos</ion-label>\n            <ion-input type=\"number\" formControlName=\"numero_asiento\"></ion-input>\n        </ion-item>\n        <ion-button class=\"submit-btn\" expand=\"block\" type=\"submit\">Guardar</ion-button>\n    </form>\n\n</ion-content>"
 
 /***/ }),
 
@@ -132,7 +132,7 @@ let NuevoVehiculoPage = class NuevoVehiculoPage {
         };
         this.firebaseService.crearVehiculo(data)
             .then(res => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/vehiculo']);
         });
     }
     resetFields() {
@@ -144,24 +144,37 @@ let NuevoVehiculoPage = class NuevoVehiculoPage {
             numero_asiento: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
         });
     }
-    getData() {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            const loading = yield this.loadingCtrl.create({
-                message: 'Cargando'
-            });
-            this.presentLoading(loading);
-            this.route.data.subscribe(routeData => {
-                routeData['data'].subscribe(data => {
-                    loading.dismiss();
-                    this.items = data;
-                    console.log(this.items.length);
-                });
-            });
-        });
-    }
+    // async getData() {
+    //   const loading = await this.loadingCtrl.create({
+    //     message: 'Cargando'
+    //   });
+    //   this.presentLoading(loading);
+    //   this.route.data.subscribe(routeData => {
+    //     routeData['data'].subscribe(data => {
+    //       loading.dismiss();
+    //       this.items = data;
+    //       console.log(this.items.length);
+    //     });
+    //   });
+    // }
     presentLoading(loading) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             return yield loading.present();
+        });
+    }
+    getData() {
+        this.route.data.subscribe(routeData => {
+            let data = routeData['data'];
+            if (data) {
+                this.item = data;
+            }
+        });
+        this.validations_form = this.formBuilder.group({
+            placa: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.item.placa, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            modelo: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.item.modelo, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            marca: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.item.marca, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            color: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.item.color, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required),
+            numero_asiento: new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.item.numero_asiento, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required)
         });
     }
 };

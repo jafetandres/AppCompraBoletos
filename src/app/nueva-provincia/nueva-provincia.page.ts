@@ -3,16 +3,28 @@ import { AuthService } from 'src/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { FirebaseService } from 'src/services/firebase.service';
-import { WebView } from '@ionic-native/ionic-webview/ngx';
+import {Pais} from 'src/models/pais.model';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { Provincia } from 'src/models/provincia.model';
+import { map } from 'rxjs/operators';
+export interface PaisId extends Pais { id: string; }
+
 @Component({
   selector: 'app-nueva-provincia',
   templateUrl: './nueva-provincia.page.html',
   styleUrls: ['./nueva-provincia.page.scss'],
 })
 export class NuevaProvinciaPage implements OnInit {
-  items: Array<any>;
+  descripcion='';
+  idPais='';
+ 
   validations_form: FormGroup;
+  private paisesCollection: AngularFirestoreCollection<Pais>;
+  paises: Observable<PaisId[]>;
+  provincia: Observable<Provincia>;
+  private provinciasCollection: AngularFirestoreCollection<Provincia>;
+ 
   constructor(
     public loadingCtrl: LoadingController,
     private authService: AuthService,
@@ -20,67 +32,47 @@ export class NuevaProvinciaPage implements OnInit {
     private route: ActivatedRoute,
     public toastCtrl: ToastController,
     private formBuilder: FormBuilder,
-    private firebaseService: FirebaseService,
-    private webview: WebView
-  ) { }
+    public afs: AngularFirestore,
+  ) { 
+
+   
+    this.provinciasCollection = this.afs.collection<Provincia>('provincia');
+  }
 
   ngOnInit() {
-    this.resetFields();
-    if (this.route && this.route.data) {
-      this.getData();
-    }
+  this.getPaises();
   }
-
-
-  async getData() {
-    const loading = await this.loadingCtrl.create({
-      message: 'Cargando'
-    });
-    this.presentLoading(loading);
-    this.route.data.subscribe(routeData => {
-      routeData['data'].subscribe(data => {
-        loading.dismiss();
-        this.items = data;
-        console.log(this.items.length);
-      });
-    });
-  }
-
-  async presentLoading(loading) {
-    return await loading.present();
-  }
-
-  logout() {
-    this.authService.doLogout()
-    .then(res => {
-      this.router.navigate([""]);
-    }, err => {
-      console.log(err);
-    })
-  }
-  resetFields(){
-
+  resetFields() {
     this.validations_form = this.formBuilder.group({
-      pais: new FormControl('', Validators.required),
-
       descripcion: new FormControl('', Validators.required),
 
     });
   }
 
-  onSubmit(value){
-    let data = {
-      pais: value.pais,
-      descripcion: value.descripcion,
-     
-     
-    }
-    this.firebaseService.crearProvincia(data)
-    .then(
-      res => {
-        this.router.navigate(["/home"]);
-      }
-    )
+
+
+
+  async getPaises() {
+    this.paisesCollection = this.afs.collection<Pais>('pais');
+    this.paises = this.paisesCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Pais;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+
+  }
+
+
+  onSubmit(){
+    const id = this.afs.createId();
+    const descripcion = this.descripcion;
+    const idPais=this.idPais
+    const provincia: Provincia = { id, idPais, descripcion };
+    this.provinciasCollection.doc(id).set(provincia);
+    this.router.navigate(["/provincia"]);
+   
   }
 
 }

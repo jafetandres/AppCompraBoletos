@@ -6158,8 +6158,8 @@ window.__Zone_disable_customElements = true;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/saulariasduran/Desktop/UPS/DecimoCiclo/Seminario/AppCompraBoletos/src/polyfills.ts */"./src/polyfills.ts");
-module.exports = __webpack_require__(/*! /Users/saulariasduran/Desktop/UPS/DecimoCiclo/Seminario/AppCompraBoletos/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
+__webpack_require__(/*! /Users/jafetandresgalvezquezada/Dropbox/ProyectosIonic/AppCompraBoletos/src/polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! /Users/jafetandresgalvezquezada/Dropbox/ProyectosIonic/AppCompraBoletos/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
 
 
 /***/ })

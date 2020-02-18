@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/provincia"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Provincia</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  
+        <ion-item>
+            <ion-label>Seleccione un Pais</ion-label>
+            <ion-select [(ngModel)]="idPais"  [compareWith]="compareFn">
+                <ion-select-option [value]="pais.id"  *ngFor="let pais of paises | async " >{{pais.descripcion}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating" color="primary">Descripcion</ion-label>
+            <ion-input type="text" [(ngModel)]="descripcion"  value="{{ (provincia | async)?.descripcion }}"></ion-input>
+        </ion-item>
+        <ion-button (click)="onSubmit()" expand="block">Guardar</ion-button>
+</ion-content>

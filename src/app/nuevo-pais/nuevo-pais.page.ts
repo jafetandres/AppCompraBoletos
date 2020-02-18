@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { FirebaseService } from 'src/services/firebase.service';
-import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import { Pais } from 'src/models/pais.model';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-nuevo-pais',
   templateUrl: './nuevo-pais.page.html',
@@ -11,42 +12,43 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 })
 export class NuevoPaisPage implements OnInit {
   validations_form: FormGroup;
+  private paisesCollection: AngularFirestoreCollection<Pais>;
+  paises: Observable<Pais[]>;
 
   constructor(
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
     public router: Router,
     private formBuilder: FormBuilder,
-    private firebaseService: FirebaseService,
-    private webview: WebView
-  ) { }
+
+    public afs: AngularFirestore,
+  ) {
+    this.paisesCollection = this.afs.collection<Pais>('pais');
+  }
 
   ngOnInit() {
     this.resetFields();
   }
-  resetFields(){
-
+  resetFields() {
     this.validations_form = this.formBuilder.group({
       descripcion: new FormControl('', Validators.required),
 
     });
   }
 
-  onSubmit(value){
-    let data = {
-      descripcion: value.descripcion,
-     
-     
-    }
-    this.firebaseService.crearPais(data)
-    .then(
-      res => {
-        this.router.navigate(["/pais"]);
-      }
-    )
+
+
+  onSubmit(value) {
+    const id = this.afs.createId();
+    const descripcion = value.descripcion;
+    const pais: Pais = { id, descripcion };
+    this.paisesCollection.doc(id).set(pais);
+    this.router.navigate(["/pais"]);
+
+
+
   }
 
+
+
 }
-
-
-

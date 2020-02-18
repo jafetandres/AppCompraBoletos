@@ -6,6 +6,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import { HomeResolver } from './home.resolver';
+
 const routes: Routes = [
   {
     path: '',
