@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { LoadingController, MenuController } from '@ionic/angular';
+import { Component, OnInit, ViewChild, ɵConsole } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FirebaseService } from 'src/services/firebase.service';
@@ -45,16 +45,26 @@ export class BoletoPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private firebaseService: FirebaseService,
-    private menu: MenuController
+    public afs: AngularFirestore,
+    public db: AngularFireDatabase
 
-  ){
+  ) {
+    this.shirtCollection = this.afs.collection<Ruta>('ruta');
+    this.rutas = this.shirtCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Ruta;
+        const id = a.payload.doc.id;
+        const destinos=data.destino;
+  
+        return { id, ...data };
+      }))
+    );
 
     this.options = new AutoCompleteOptions();
     this.options.autocomplete = 'on';
     this.options.debounce = 750;
     this.options.placeholder = 'Search';
     this.options.type = 'add-friend.svg';
-
 
   }
 
@@ -192,11 +202,6 @@ export class BoletoPage implements OnInit {
   eliminar(boleto) {
     console.log("Lega correcto", boleto);
     this.firebaseService.deleteBoleto(boleto);
-  }
-  toggleMenu() {
-    this.menu.toggle();
-    this.menu.enable(true);
-
   }
 
 }

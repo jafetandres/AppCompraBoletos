@@ -3,6 +3,7 @@ import { AuthService } from 'src/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 import {Pais} from 'src/models/pais.model';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -23,6 +24,8 @@ export class NuevaProvinciaPage implements OnInit {
   private paisesCollection: AngularFirestoreCollection<Pais>;
   paises: Observable<PaisId[]>;
   provincia: Observable<Provincia>;
+  
+
   private provinciasCollection: AngularFirestoreCollection<Provincia>;
  
   constructor(
@@ -50,6 +53,11 @@ export class NuevaProvinciaPage implements OnInit {
   }
 
 
+ver(){
+  console.log("idPais"+this.idPais);
+  console.log("idPais"+this.descripcion);
+
+}
 
 
   async getPaises() {
@@ -64,19 +72,15 @@ export class NuevaProvinciaPage implements OnInit {
 
   }
 
-  onSubmit(value){
-    let data = {
-      pais: value.pais,
-      descripcion: value.descripcion,
-     
-     
-    }
-    this.firebaseService.crearProvincia(data)
-    .then(
-      res => {
-        this.router.navigate(['/provincia']);
-      }
-    )
+
+  onSubmit(){
+    const id = this.afs.createId();
+    const descripcion = this.descripcion;
+    const idPais=this.idPais
+    const provincia: Provincia = { id, idPais, descripcion };
+    this.provinciasCollection.doc(id).set(provincia);
+    this.router.navigate(["/provincia"]);
+   
   }
 
 }

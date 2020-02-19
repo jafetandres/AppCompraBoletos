@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
-import { LoadingController, MenuController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -24,9 +24,10 @@ export class PaisPage implements OnInit {
   constructor(
     public loadingCtrl: LoadingController,
     private router: Router,
-    private route: ActivatedRoute,
-    private menu: MenuController
-  ) { }
+    public afs: AngularFirestore,
+  ) { 
+  }
+
 
   ngOnInit() {
     this.getPaises();
@@ -52,9 +53,7 @@ export class PaisPage implements OnInit {
     this.pais = this.paisDoc.valueChanges();
     this.paisDoc.delete();
   }
-disabeMenu() {
-  this.menu.enable(false);
-}
+
 
 
 

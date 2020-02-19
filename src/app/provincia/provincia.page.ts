@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
-import { LoadingController, MenuController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { Provincia } from 'src/models/provincia.model';
@@ -25,8 +25,7 @@ export class ProvinciaPage implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private menu: MenuController,
-    
+    public afs: AngularFirestore,
   ) { }
 
   ngOnInit() {
@@ -48,7 +47,11 @@ export class ProvinciaPage implements OnInit {
   actualizar(id){
     this.router.navigate(['/actualizar-provincia', id]);
   }
-  disabeMenu() {
-    this.menu.enable(false);
+  eiminar(id){
+    this.provinciaDoc = this.afs.doc<Provincia>('provincia/' + id);
+    this.provincia = this.provinciaDoc.valueChanges();
+    this.provinciaDoc.delete();
   }
+
+
 }

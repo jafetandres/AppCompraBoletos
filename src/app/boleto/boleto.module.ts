@@ -11,17 +11,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { BoletoResolver } from './boleto.resolver';
 import { AutoCompleteModule } from 'ionic4-auto-complete';
 import { SimpleServiceModule } from 'src/components/simple-service/simple-service.module';
-]
 
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: BoletoPage,
-//     resolve: {
-//       data: BoletoResolver
-//     }
-//   }
-// ];
+const routes: Routes = [
+  {
+    path: '',
+    component: BoletoPage,
+    resolve: {
+      data: BoletoResolver
+    }
+  }
+];
 
 @NgModule({
   imports: [
@@ -30,8 +29,6 @@ import { SimpleServiceModule } from 'src/components/simple-service/simple-servic
     FormsModule,
     IonicModule,
     SimpleServiceModule,
-    BoletoPageRoutingModule
-
   
   ],
   declarations: [BoletoPage],

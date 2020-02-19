@@ -9,7 +9,7 @@ import { MenuController } from '@ionic/angular';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-class HomePage implements OnInit {
+export class HomePage implements OnInit {
 
   items: Array<any>;
 
@@ -18,6 +18,7 @@ class HomePage implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
+
     private menu: MenuController
   ) { }
   toggleMenu() {
@@ -72,11 +73,7 @@ class HomePage implements OnInit {
       this.router.navigate([""]);
     }, err => {
       console.log(err);
-    });
-  }
-  toggleMenu() {
-    this.menu.toggle();
-
+    })
   }
 
 }

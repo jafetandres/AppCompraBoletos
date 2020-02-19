@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
-import { LoadingController, MenuController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FirebaseService } from 'src/services/firebase.service';
+import { Observable } from 'rxjs';
+import { Ciudad } from 'src/models/ciudad.model';
+import { AngularFirestoreDocument, AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
+export interface CiudadId extends Ciudad { id: string; }
 
 @Component({
   selector: 'app-ciudad',
@@ -22,8 +26,7 @@ export class CiudadPage implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private firebaseService: FirebaseService,
-    private menu: MenuController
+    public afs: AngularFirestore,
   ) { }
 
   ngOnInit() {
@@ -66,13 +69,6 @@ export class CiudadPage implements OnInit {
     this.ciudad = this.paisDoc.valueChanges();
     this.paisDoc.delete();
   }
-  actualizar(ciudadId){
-    this.router.navigate(['/actualizar-ciudad', ciudadId]);
-  }
-  eiminar(ciudad ){
-    this.firebaseService.eliminarCiudad(ciudad);
-  }
-  disabeMenu() {
-    this.menu.enable(false);
-  }
+
+  
 }
